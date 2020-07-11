@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/main.png-71d3fb658fd36826db139f88a2301334.stex"
+path="res://.import/MainFont.png-bdfac6fbf1db4901b75c55754f1d0e02.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/main.png"
-dest_files=[ "res://.import/main.png-71d3fb658fd36826db139f88a2301334.stex" ]
+source_file="res://UI/MainFont.png"
+dest_files=[ "res://.import/MainFont.png-bdfac6fbf1db4901b75c55754f1d0e02.stex" ]
 
 [params]
 

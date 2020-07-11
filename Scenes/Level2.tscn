@@ -1,12 +1,11 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://Textures/Tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=3]
-[ext_resource path="res://Fonts/main.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Textures/Container9patch.png" type="Texture" id=5]
-[ext_resource path="res://Textures/Character.png" type="Texture" id=6]
-[ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=7]
+[ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
+[ext_resource path="res://Textures/Character.png" type="Texture" id=7]
+[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -152,9 +151,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [sub_resource type="ConvexPolygonShape2D" id=48]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=50]
+[sub_resource type="TileSet" id=49]
 0/name = "Walls"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 192, 256 )
@@ -466,7 +465,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 1/name = "Fake Wall"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 192, 96, 32, 32 )
@@ -479,11 +478,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 
-[sub_resource type="TileSet" id=51]
+[sub_resource type="TileSet" id=50]
 0/name = "Death"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 192, 0, 32, 32 )
@@ -497,7 +496,7 @@ script = ExtResource( 3 )
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Reset"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 192, 32, 32, 32 )
@@ -511,7 +510,7 @@ script = ExtResource( 3 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Goal"
-2/texture = ExtResource( 1 )
+2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 192, 64, 32, 32 )
@@ -525,7 +524,7 @@ script = ExtResource( 3 )
 2/shapes = [  ]
 2/z_index = 0
 3/name = "R conveyor"
-3/texture = ExtResource( 1 )
+3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 256, 32, 32 )
@@ -539,7 +538,7 @@ script = ExtResource( 3 )
 3/shapes = [  ]
 3/z_index = 0
 4/name = "D conveyor"
-4/texture = ExtResource( 1 )
+4/texture = ExtResource( 4 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 32, 256, 32, 32 )
@@ -553,7 +552,7 @@ script = ExtResource( 3 )
 4/shapes = [  ]
 4/z_index = 0
 5/name = "L conveyor"
-5/texture = ExtResource( 1 )
+5/texture = ExtResource( 4 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 64, 256, 32, 32 )
@@ -567,7 +566,7 @@ script = ExtResource( 3 )
 5/shapes = [  ]
 5/z_index = 0
 6/name = "U conveyor"
-6/texture = ExtResource( 1 )
+6/texture = ExtResource( 4 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 96, 256, 32, 32 )
@@ -581,31 +580,46 @@ script = ExtResource( 3 )
 6/shapes = [  ]
 6/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=52]
+[sub_resource type="RectangleShape2D" id=51]
 extents = Vector2( 31.5, 31.5 )
 
-[node name="TestLevel" type="Node2D"]
+[node name="Level2" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 70.0
+margin_top = 78.0
+margin_right = 322.0
+margin_bottom = 94.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 8 )
+text = "Let me introduce one of the concepts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Walls" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 49 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1179643, 1, 0, -1179642, 1, 0, -1179641, 1, 0, -1179640, 1, 0, -1179639, 1, 0, -1179638, 1, 0, -1114107, 1, 0, -1048571, 1, 0, -1048563, 1, 0, -983035, 1, 0, -983027, 1, 0, -917499, 1, 0, -851963, 1, 0, -786427, 1, 0, -786419, 1, 0, -720891, 1, 0, -720883, 1, 0, -655355, 1, 0, -655347, 1, 0, -589819, 1, 0, -589814, 1, 0, -589813, 1, 0, -589812, 1, 0, -589811, 1, 0, -393207, 1, 0, -262145, 1, 0, -196611, 1, 0, -196609, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -65539, 1, 0, -65538, 0, 3, -65537, 0, 131073, -131072, 0, 131073, -131071, 0, 131073, -131070, 0, 4, -131069, 1, 0, -3, 1, 0, -2, 0, 65538, -65534, 0, 65536, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, 65533, 1, 0, 65534, 0, 65538, 2, 0, 131072, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 131073, 12, 0, 4, 13, 1, 0, 131069, 1, 0, 131070, 0, 65538, 65548, 0, 65536, 65549, 1, 0, 196605, 1, 0, 196606, 0, 65539, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 2, 131084, 0, 65536, 131085, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 0, 65538, 196620, 0, 65536, 196621, 1, 0, 327679, 1, 0, 262149, 1, 0, 262150, 0, 65538, 262156, 0, 65536, 262157, 1, 0, 262158, 1, 0, 327685, 1, 0, 327686, 0, 65539, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 1, 327691, 0, 1, 327692, 0, 65540, 327693, 1, 0, 327694, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0 )
+
+[node name="Interactive" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 50 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -262146, 1, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -327672, 1, 0, -327671, 1, 0, -327670, 1, 0, -327669, 1, 0, -327668, 1, 0, -327667, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 0, 3, -262144, 0, 131073, -262143, 0, 131073, -262142, 0, 131073, -262141, 0, 131073, -262140, 0, 131073, -262139, 0, 131073, -262138, 0, 131073, -262137, 0, 131073, -262136, 0, 131073, -262135, 0, 131073, -262134, 0, 131073, -262133, 0, 131073, -262132, 0, 4, -262131, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 0, 65538, -196596, 0, 65536, -196595, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 0, 65538, -131060, 0, 65536, -131059, 1, 0, -2, 1, 0, -1, 0, 65538, -65524, 0, 65536, -65523, 1, 0, 65534, 1, 0, 65535, 0, 65538, 12, 0, 65536, 13, 1, 0, 131070, 1, 0, 131071, 0, 65538, 65540, 0, 196611, 65548, 0, 65536, 65549, 1, 0, 196606, 1, 0, 196607, 0, 65538, 131076, 0, 327683, 131084, 0, 65536, 131085, 1, 0, 262142, 1, 0, 262143, 0, 65538, 196612, 0, 327681, 196620, 0, 65536, 196621, 1, 0, 327678, 1, 0, 327679, 0, 65539, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 327680, 262149, 0, 1, 262150, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 65540, 262157, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0 )
-
-[node name="Interactive" type="TileMap" parent="."]
-scale = Vector2( 2, 2 )
-tile_set = SubResource( 51 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( -196608, 0, 0, -196597, 1, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 196614, 2, 0 )
+tile_data = PoolIntArray( 65547, 2, 0 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
-position = Vector2( 160, 160 )
+position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
-shape = SubResource( 52 )
+shape = SubResource( 51 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 current = true
@@ -613,30 +627,30 @@ smoothing_enabled = true
 
 [node name="Sprite" type="Sprite" parent="Character"]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="ArrowL" type="Sprite" parent="Character"]
 visible = false
 rotation = 3.14159
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 
 [node name="ArrowR" type="Sprite" parent="Character"]
 visible = false
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 
 [node name="ArrowU" type="Sprite" parent="Character"]
 visible = false
 rotation = -1.5708
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 
 [node name="ArrowD" type="Sprite" parent="Character"]
 visible = false
 rotation = 1.5708
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -652,31 +666,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/StuckHint"]
-margin_left = 131.0
-margin_right = 381.0
+[node name="Panel" type="Panel" parent="CanvasLayer/StuckHint"]
+margin_left = 128.0
+margin_right = 384.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 250, 32 )
-texture = ExtResource( 5 )
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+rect_min_size = Vector2( 256, 32 )
+theme = ExtResource( 8 )
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StuckHint/NinePatchRect"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StuckHint/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 7.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/StuckHint/NinePatchRect/CenterContainer"]
-margin_left = 9.0
-margin_right = 240.0
+[node name="Label" type="Label" parent="CanvasLayer/StuckHint/Panel/CenterContainer"]
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 243.0
 margin_bottom = 24.0
-rect_min_size = Vector2( 231, 24 )
-custom_fonts/font = ExtResource( 4 )
+theme = ExtResource( 8 )
 text = "Stuck? Hit R to restart the level"
 align = 1
 valign = 1

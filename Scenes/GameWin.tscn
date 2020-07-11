@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Fonts/main.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,8 +19,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CenterContainer"]
 margin_left = 193.0
-margin_top = 138.0
+margin_top = 142.0
 margin_right = 319.0
-margin_bottom = 162.0
-custom_fonts/font = ExtResource( 1 )
+margin_bottom = 158.0
+theme = ExtResource( 1 )
 text = "Congrats, you won!"

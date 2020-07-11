@@ -1,8 +1,9 @@
 extends Node
 
-const FIRST_LEVEL = 'TestLevel'
+const FIRST_LEVEL = 'Level1'
 const LEVEL_SEQ = {
-	'TestLevel': 'GameWin',
+	'Level1': 'Level2',
+	'Level2': 'GameWin',
 }
 
 func startScene(name: String):

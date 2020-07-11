@@ -15,11 +15,18 @@ const R = 3
 
 var moveState = {}
 
-var inputMap = {
+const inputMap = {
 	KEY_W: U,
 	KEY_A: L,
 	KEY_S: D,
 	KEY_D: R,
+}
+
+const tileOffsetToDirMap = {
+	Vector2(0, -1): U,
+	Vector2(-1, 0): L,
+	Vector2(0, 1): D,
+	Vector2(1, 0): R,
 }
 
 var spawn: Vector2 = Vector2.ZERO
@@ -78,8 +85,24 @@ func moveToTargetDiagonal(tileOffset: Vector2):
 	# Both axes clear, go straignt
 	moveToTargetSimple(tileOffset)
 
-func checkIfStuck():
-	pass
+func checkIfStuck(tileOffset: Vector2):
+	var hOffset = tileOffset
+	hOffset.y = 0
+	var vOffset = tileOffset
+	vOffset.x = 0
+	
+	var collidesH = not isTileFree(tilePos + hOffset)
+	var collidesV = not isTileFree(tilePos + vOffset)
+	
+	var stuckH = moveState[R] and moveState[L] \
+		or collidesH and (moveState[tileOffsetToDirMap[hOffset]] \
+			or moveState[tileOffsetToDirMap[-hOffset]])
+	var stuckV = moveState[U] and moveState[D] \
+		or collidesV and (moveState[tileOffsetToDirMap[vOffset]] \
+			or moveState[tileOffsetToDirMap[-vOffset]])
+	
+	if stuckH and stuckV:
+		get_parent().find_node("StuckHint").visible = true
 
 func updateTarget():
 	var tileOffset = Vector2.ZERO
@@ -97,7 +120,7 @@ func updateTarget():
 	else:
 		moveToTargetSimple(tileOffset)
 	
-	checkIfStuck()
+	checkIfStuck(tileOffset)
 
 func _input(event):
 	if event is InputEventKey:

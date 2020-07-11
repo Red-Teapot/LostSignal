@@ -39,7 +39,6 @@ const dirToTileOffsetMap = {
 	R: Vector2(1, 0),
 }
 
-var spawn: Vector2 = Vector2.ZERO
 var target: Vector2 = Vector2.ZERO
 var isTargetReached: bool = true
 var isOnConveyor: bool = false
@@ -50,6 +49,9 @@ var lastInteractiveTile: int = TileMap.INVALID_CELL
 
 # Temporary variables
 var tilePos: Vector2 = Vector2.ZERO;
+
+func respawn():
+	LevelInfo.startLevel(get_tree().current_scene.name)
 
 func resetMovements():
 	moveState = {
@@ -65,7 +67,6 @@ func resetMovements():
 
 func _enter_tree():
 	resetMovements()
-	spawn = position
 	
 	walls = get_parent().find_node("Walls")
 	interactive = get_parent().find_node("Interactive")
@@ -160,7 +161,7 @@ func _input(event):
 			moveState[dir] = true
 			updateArrows()
 		if event.scancode == KEY_R:
-			get_tree().reload_current_scene()
+			respawn()
 
 func checkInteractives():
 	var tileID = interactive.get_cellv(tilePos)
@@ -168,7 +169,7 @@ func checkInteractives():
 	if tileID != lastInteractiveTile:
 		match tileID:
 			TILE_DEATH:
-				get_tree().reload_current_scene()
+				respawn()
 			TILE_RESET:
 				resetMovements()
 			TILE_GOAL:

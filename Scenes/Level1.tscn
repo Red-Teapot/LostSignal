@@ -1,10 +1,11 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://UI/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 [ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=6]
 [ext_resource path="res://Textures/Character.png" type="Texture" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -583,7 +584,38 @@ script = ExtResource( 5 )
 [sub_resource type="RectangleShape2D" id=51]
 extents = Vector2( 31.5, 31.5 )
 
+[sub_resource type="Animation" id=52]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnims/Rectangle:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=53]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnims/Rectangle:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="Level1" type="Node2D"]
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
@@ -689,6 +721,23 @@ margin_top = 8.0
 margin_right = 243.0
 margin_bottom = 24.0
 text = "Stuck? Hit R to restart the level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeAnims" type="AnimationPlayer" parent="CanvasLayer"]
+pause_mode = 2
+anims/FadeIn = SubResource( 52 )
+anims/FadeOut = SubResource( 53 )
+
+[node name="FadeTimer" type="Timer" parent="CanvasLayer/FadeAnims"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Rectangle" type="ColorRect" parent="CanvasLayer/FadeAnims"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

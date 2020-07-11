@@ -587,7 +587,7 @@ extents = Vector2( 31.5, 31.5 )
 [sub_resource type="Animation" id=52]
 resource_name = "FadeIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FadeAnims/Rectangle:color")
+tracks/0/path = NodePath("FadeAnims/FadeRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -602,7 +602,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=53]
 resource_name = "FadeOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FadeAnims/Rectangle:color")
+tracks/0/path = NodePath("FadeAnims/FadeRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -734,7 +734,8 @@ anims/FadeOut = SubResource( 53 )
 wait_time = 0.3
 one_shot = true
 
-[node name="Rectangle" type="ColorRect" parent="CanvasLayer/FadeAnims"]
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer/FadeAnims"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )

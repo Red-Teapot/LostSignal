@@ -737,7 +737,7 @@ one_shot = true
 [node name="Rectangle" type="ColorRect" parent="CanvasLayer/FadeAnims"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

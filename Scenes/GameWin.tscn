@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Fonts/main.fnt" type="BitmapFont" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -8,15 +10,17 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 485.0
-margin_top = 293.0
-margin_right = 538.0
-margin_bottom = 307.0
-text = "You won"
+margin_left = 193.0
+margin_top = 138.0
+margin_right = 319.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 1 )
+text = "Congrats, you won!"

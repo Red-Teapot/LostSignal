@@ -61,6 +61,7 @@ func resetMovements():
 	target = position
 	isTargetReached = true
 	isOnConveyor = false
+	updateArrows()
 
 func _enter_tree():
 	resetMovements()
@@ -146,11 +147,18 @@ func updateTarget():
 	
 	checkIfStuck(tileOffset)
 
+func updateArrows():
+	get_node("ArrowU").visible = moveState[U]
+	get_node("ArrowD").visible = moveState[D]
+	get_node("ArrowL").visible = moveState[L]
+	get_node("ArrowR").visible = moveState[R]
+
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode in inputMap:
 			var dir = inputMap[event.scancode]
 			moveState[dir] = true
+			updateArrows()
 		if event.scancode == KEY_R:
 			get_tree().reload_current_scene()
 

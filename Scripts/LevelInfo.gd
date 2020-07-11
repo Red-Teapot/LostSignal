@@ -2,18 +2,16 @@ extends Node
 
 const FIRST_LEVEL = 'TestLevel'
 const LEVEL_SEQ = {
-	'TestLevel': null,
+	'TestLevel': 'GameWin',
 }
 
-func startLevel(name: String):
+func startScene(name: String):
 	get_tree().change_scene('res://Scenes/' + name + '.tscn')
 
 func startFirstLevel():
-	startLevel(FIRST_LEVEL)
+	startScene(FIRST_LEVEL)
 
 func startNextLevel():
 	var currentLevelName = get_tree().current_scene.name
 	var nextLevelName = LEVEL_SEQ[currentLevelName]
-	if nextLevelName == null:
-		nextLevelName = 'GameWin'
-	startLevel(nextLevelName)
+	startScene(nextLevelName)

@@ -25,11 +25,13 @@ var inputMap = {
 var spawn: Vector2 = Vector2.ZERO
 var target: Vector2 = Vector2.ZERO
 var isTargetReached: bool = true
-var velocity: Vector2 = Vector2.ZERO
 
 var walls: TileMap = null
 var interactive: TileMap = null
 var lastInteractiveTile: int = TileMap.INVALID_CELL
+
+# Temporary variables
+var tilePos: Vector2 = Vector2.ZERO;
 
 func resetMovements():
 	moveState = {
@@ -52,14 +54,11 @@ func isTileFree(tilePos: Vector2):
 	return walls.get_cellv(tilePos) == TileMap.INVALID_CELL
 	
 func moveToTargetSimple(tileOffset: Vector2):
-	var tilePos = walls.world_to_map(position / TILEMAP_SCALE)
 	var targetTilePos = tilePos + tileOffset
 	if isTileFree(targetTilePos):
 		target = walls.map_to_world(targetTilePos) * TILEMAP_SCALE + TILEMAP_HALF_CELL_SIZE
 
 func moveToTargetDiagonal(tileOffset: Vector2):
-	var tilePos = walls.world_to_map(position / TILEMAP_SCALE)
-	
 	# To be able to move straight diagonally,
 	# we make sure there is clearance in both axes
 	var tileOffsetX = tileOffset
@@ -79,6 +78,9 @@ func moveToTargetDiagonal(tileOffset: Vector2):
 	# Both axes clear, go straignt
 	moveToTargetSimple(tileOffset)
 
+func checkIfStuck():
+	pass
+
 func updateTarget():
 	var tileOffset = Vector2.ZERO
 	if moveState[U]:
@@ -94,15 +96,18 @@ func updateTarget():
 		moveToTargetDiagonal(tileOffset)
 	else:
 		moveToTargetSimple(tileOffset)
+	
+	checkIfStuck()
 
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode in inputMap:
 			var dir = inputMap[event.scancode]
 			moveState[dir] = true
+		if event.scancode == KEY_R:
+			get_tree().reload_current_scene()
 
 func checkInteractives():
-	var tilePos = interactive.world_to_map(position / TILEMAP_SCALE)
 	var tileID = interactive.get_cellv(tilePos)
 	
 	if tileID == lastInteractiveTile:
@@ -121,6 +126,9 @@ func checkInteractives():
 	lastInteractiveTile = tileID
 
 func _physics_process(delta):
+	tilePos.x = floor(position.x / 64)
+	tilePos.y = floor(position.y / 64)
+	
 	checkInteractives()
 	
 	if isTargetReached:
@@ -128,8 +136,7 @@ func _physics_process(delta):
 		updateTarget()
 	
 	var distance = position.distance_to(target)
-	velocity = position.direction_to(target) * min(distance, SPEED * delta)
-	position += velocity
+	position += position.direction_to(target) * min(distance, SPEED * delta)
 	
 	if position.distance_squared_to(target) < 8:
 		isTargetReached = true

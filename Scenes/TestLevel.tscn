@@ -596,7 +596,7 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 51 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -196597, 1, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 196614, 2, 0 )
+tile_data = PoolIntArray( -196608, 0, 0, -196597, 1, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 196614, 2, 0 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
 position = Vector2( 160, 160 )

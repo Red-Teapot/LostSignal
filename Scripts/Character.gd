@@ -7,6 +7,10 @@ const TILEMAP_HALF_CELL_SIZE = Vector2(32, 32)
 const TILE_DEATH = 0
 const TILE_RESET = 1
 const TILE_GOAL = 2
+const TILE_CONV_R = 3
+const TILE_CONV_D = 4
+const TILE_CONV_L = 5
+const TILE_CONV_U = 6
 
 const U = 0
 const L = 1
@@ -28,10 +32,17 @@ const tileOffsetToDirMap = {
 	Vector2(0, 1): D,
 	Vector2(1, 0): R,
 }
+const dirToTileOffsetMap = {
+	U: Vector2(0, -1),
+	L: Vector2(-1, 0),
+	D: Vector2(0, 1),
+	R: Vector2(1, 0),
+}
 
 var spawn: Vector2 = Vector2.ZERO
 var target: Vector2 = Vector2.ZERO
 var isTargetReached: bool = true
+var isOnConveyor: bool = false
 
 var walls: TileMap = null
 var interactive: TileMap = null
@@ -49,6 +60,7 @@ func resetMovements():
 	}
 	target = position
 	isTargetReached = true
+	isOnConveyor = false
 
 func _enter_tree():
 	resetMovements()
@@ -60,7 +72,10 @@ func _enter_tree():
 func isTileFree(tilePos: Vector2):
 	return walls.get_cellv(tilePos) == TileMap.INVALID_CELL
 	
-func moveToTargetSimple(tileOffset: Vector2):
+func moveToTargetSimple(tileOffset: Vector2, conveyor: bool):
+	if isOnConveyor and not conveyor:
+		return true
+	
 	var targetTilePos = tilePos + tileOffset
 	if isTileFree(targetTilePos):
 		target = walls.map_to_world(targetTilePos) * TILEMAP_SCALE + TILEMAP_HALF_CELL_SIZE
@@ -80,19 +95,19 @@ func moveToTargetDiagonal(tileOffset: Vector2):
 	var freeOffset = null
 	
 	if not isTileFree(tilePos + tileOffsetX):
-		moveToTargetSimple(tileOffsetY)
+		moveToTargetSimple(tileOffsetY, false)
 		return
 	else:
 		freeOffset = tileOffsetX
 	
 	if not isTileFree(tilePos + tileOffsetY):
-		moveToTargetSimple(tileOffsetX)
+		moveToTargetSimple(tileOffsetX, false)
 		return
 	else:
 		freeOffset = tileOffsetY
 	
-	if not moveToTargetSimple(tileOffset):
-		moveToTargetSimple(freeOffset)
+	if not moveToTargetSimple(tileOffset, false):
+		moveToTargetSimple(freeOffset, false)
 
 func checkIfStuck(tileOffset: Vector2):
 	var hOffset = tileOffset
@@ -127,7 +142,7 @@ func updateTarget():
 	if tileOffset.x != 0 and tileOffset.y != 0:
 		moveToTargetDiagonal(tileOffset)
 	else:
-		moveToTargetSimple(tileOffset)
+		moveToTargetSimple(tileOffset, false)
 	
 	checkIfStuck(tileOffset)
 
@@ -142,18 +157,30 @@ func _input(event):
 func checkInteractives():
 	var tileID = interactive.get_cellv(tilePos)
 	
-	if tileID == lastInteractiveTile:
-		return
+	if tileID != lastInteractiveTile:
+		match tileID:
+			TILE_DEATH:
+				get_tree().reload_current_scene()
+			TILE_RESET:
+				resetMovements()
+			TILE_GOAL:
+				LevelInfo.startNextLevel()
 	
 	match tileID:
-		TILE_DEATH:
-			get_tree().reload_current_scene()
-		TILE_RESET:
-			resetMovements()
-		TILE_GOAL:
-			LevelInfo.startNextLevel()
+		TILE_CONV_R:
+			isOnConveyor = true
+			moveToTargetSimple(dirToTileOffsetMap[R], true)
+		TILE_CONV_L:
+			isOnConveyor = true
+			moveToTargetSimple(dirToTileOffsetMap[L], true)
+		TILE_CONV_U:
+			isOnConveyor = true
+			moveToTargetSimple(dirToTileOffsetMap[U], true)
+		TILE_CONV_D:
+			isOnConveyor = true
+			moveToTargetSimple(dirToTileOffsetMap[D], true)
 		_:
-			return
+			isOnConveyor = false
 	
 	lastInteractiveTile = tileID
 

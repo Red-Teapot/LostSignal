@@ -64,6 +64,9 @@ func moveToTargetSimple(tileOffset: Vector2):
 	var targetTilePos = tilePos + tileOffset
 	if isTileFree(targetTilePos):
 		target = walls.map_to_world(targetTilePos) * TILEMAP_SCALE + TILEMAP_HALF_CELL_SIZE
+		return true
+	else:
+		return false
 
 func moveToTargetDiagonal(tileOffset: Vector2):
 	# To be able to move straight diagonally,
@@ -74,16 +77,22 @@ func moveToTargetDiagonal(tileOffset: Vector2):
 	var tileOffsetY = tileOffset
 	tileOffsetY.x = 0
 	
+	var freeOffset = null
+	
 	if not isTileFree(tilePos + tileOffsetX):
 		moveToTargetSimple(tileOffsetY)
 		return
+	else:
+		freeOffset = tileOffsetX
 	
 	if not isTileFree(tilePos + tileOffsetY):
 		moveToTargetSimple(tileOffsetX)
 		return
+	else:
+		freeOffset = tileOffsetY
 	
-	# Both axes clear, go straignt
-	moveToTargetSimple(tileOffset)
+	if not moveToTargetSimple(tileOffset):
+		moveToTargetSimple(freeOffset)
 
 func checkIfStuck(tileOffset: Vector2):
 	var hOffset = tileOffset

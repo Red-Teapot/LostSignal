@@ -4,6 +4,10 @@ const SPEED = 300
 const TILEMAP_SCALE = 2
 const TILEMAP_HALF_CELL_SIZE = Vector2(32, 32)
 
+const TILE_DEATH = 0
+const TILE_RESET = 1
+const TILE_GOAL = 2
+
 const U = 0
 const L = 1
 const D = 2
@@ -18,11 +22,14 @@ var inputMap = {
 	KEY_D: R,
 }
 
+var spawn: Vector2 = Vector2.ZERO
 var target: Vector2 = Vector2.ZERO
 var isTargetReached: bool = true
 var velocity: Vector2 = Vector2.ZERO
 
 var walls: TileMap = null
+var interactive: TileMap = null
+var lastInteractiveTile: int = TileMap.INVALID_CELL
 
 func resetMovements():
 	moveState = {
@@ -31,15 +38,18 @@ func resetMovements():
 		D: false,
 		R: false,
 	}
+	target = position
+	isTargetReached = true
 
 func _enter_tree():
 	resetMovements()
-	target = position
-	isTargetReached = true
+	spawn = position
+	
 	walls = get_parent().find_node("Walls")
+	interactive = get_parent().find_node("Interactive")
 
 func isTileFree(tilePos: Vector2):
-	return walls.get_cellv(tilePos) == -1
+	return walls.get_cellv(tilePos) == TileMap.INVALID_CELL
 	
 func moveToTargetSimple(tileOffset: Vector2):
 	var tilePos = walls.world_to_map(position / TILEMAP_SCALE)
@@ -91,7 +101,28 @@ func _input(event):
 			var dir = inputMap[event.scancode]
 			moveState[dir] = true
 
+func checkInteractives():
+	var tilePos = interactive.world_to_map(position / TILEMAP_SCALE)
+	var tileID = interactive.get_cellv(tilePos)
+	
+	if tileID == lastInteractiveTile:
+		return
+	
+	match tileID:
+		TILE_DEATH:
+			get_tree().reload_current_scene()
+		TILE_RESET:
+			resetMovements()
+		TILE_GOAL:
+			LevelInfo.startNextLevel()
+		_:
+			return
+	
+	lastInteractiveTile = tileID
+
 func _physics_process(delta):
+	checkInteractives()
+	
 	if isTargetReached:
 		isTargetReached = false
 		updateTarget()

@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Lost Signal"
 run/main_scene="res://Scenes/MainMenu.tscn"
 
+[autoload]
+
+LevelInfo="*res://Scripts/LevelInfo.gd"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

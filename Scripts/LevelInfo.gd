@@ -28,4 +28,4 @@ func startNextLevel():
 		var nextLevelName = LEVEL_SEQ[currentLevelName]
 		startLevel(nextLevelName)
 	else:
-		startLevel('MainMenu')
+		get_tree().quit(-1)

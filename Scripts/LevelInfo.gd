@@ -2,7 +2,8 @@ extends Node
 
 const FIRST_LEVEL = 'Level1'
 const LEVEL_SEQ = {
-	'Level1': 'Level1_5',
+	'Level1': 'Level1_3',
+	'Level1_3': 'Level1_5',
 	'Level1_5': 'Level2',
 	'Level2': 'Level3',
 	'Level3': 'Level3_5',

@@ -2,8 +2,12 @@ extends Node
 
 const FIRST_LEVEL = 'Level1'
 const LEVEL_SEQ = {
-	'Level1': 'Level2',
-	'Level2': 'GameWin',
+	'Level1': 'Level1_5',
+	'Level1_5': 'Level2',
+	'Level2': 'Level3',
+	'Level3': 'Level3_5',
+	'Level3_5': 'Level4',
+	'Level4': 'GameWin',
 }
 
 func startScene(name: String):

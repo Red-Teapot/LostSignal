@@ -51,6 +51,7 @@ var lastInteractiveTile: int = TileMap.INVALID_CELL
 var tilePos: Vector2 = Vector2.ZERO;
 
 func respawn():
+	SoundPlayer.play('levelRestart', true)
 	LevelInfo.startLevel(get_tree().current_scene.name)
 
 func resetMovements():
@@ -173,6 +174,7 @@ func checkInteractives():
 			TILE_RESET:
 				resetMovements()
 			TILE_GOAL:
+				SoundPlayer.play('levelCompletion', true)
 				LevelInfo.startNextLevel()
 	
 	match tileID:

@@ -3,11 +3,12 @@ extends Node
 const soundList = {
 	'click': 'res://Sounds/PlayButtonClick.wav',
 	'mainTheme': 'res://Sounds/MainTheme.ogg',
-	'leevlRestart': 'res://Sounds/LevelRestart.wav',
+	'levelRestart': 'res://Sounds/LevelRestart.wav',
 	'levelCompletion': 'res://Sounds/LevelComplete.wav',
 }
 const volumeSettings = {
 	'mainTheme': -15,
+	'levelComplete': -9,
 }
 var soundPlayers = {}
 

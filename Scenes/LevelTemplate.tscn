@@ -1,15 +1,15 @@
 [gd_scene load_steps=64 format=2]
 
-[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 [ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Level.gd" type="Script" id=6]
+[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=6]
 [ext_resource path="res://Textures/Character.png" type="Texture" id=7]
-[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=10]
+[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -617,24 +617,10 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Level1" type="Node2D"]
-script = ExtResource( 6 )
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 136.0
-margin_top = -142.0
-margin_right = 381.0
-margin_bottom = -107.0
-rect_scale = Vector2( 2, 2 )
-theme = ExtResource( 1 )
-text = "This one should be straightforward.
-Or, perhaps, rightward?"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
 }
 
 [node name="Walls" type="TileMap" parent="."]
@@ -642,17 +628,15 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 49 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -262146, 1, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -327672, 1, 0, -327671, 1, 0, -327670, 1, 0, -327669, 1, 0, -327668, 1, 0, -327667, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 0, 3, -262144, 0, 131073, -262143, 0, 131073, -262142, 0, 131073, -262141, 0, 131073, -262140, 0, 131073, -262139, 0, 131073, -262138, 0, 131073, -262137, 0, 131073, -262136, 0, 131073, -262135, 0, 131073, -262134, 0, 131073, -262133, 0, 131073, -262132, 0, 4, -262131, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 0, 65538, -196596, 0, 65536, -196595, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 0, 65538, -131060, 0, 65536, -131059, 1, 0, -2, 1, 0, -1, 0, 65538, -65524, 0, 65536, -65523, 1, 0, 65534, 1, 0, 65535, 0, 65538, 12, 0, 65536, 13, 1, 0, 131070, 1, 0, 131071, 0, 65538, 65548, 0, 65536, 65549, 1, 0, 196606, 1, 0, 196607, 0, 65538, 131084, 0, 65536, 131085, 1, 0, 262142, 1, 0, 262143, 0, 65538, 196620, 0, 65536, 196621, 1, 0, 327678, 1, 0, 327679, 0, 65539, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 1, 262150, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 65540, 262157, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0 )
 
 [node name="Interactive" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 50 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 8, 2, 0 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
-position = Vector2( 224, 32 )
+position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
@@ -690,15 +674,15 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="DirectionActivate" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 8 )
+stream = ExtResource( 6 )
 volume_db = -10.0
 
 [node name="DirectionReset" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -10.0
 
 [node name="MovementLoop" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -719,10 +703,7 @@ margin_left = 128.0
 margin_right = 384.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 256, 32 )
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StuckHint/Panel"]
 anchor_right = 1.0
@@ -736,7 +717,10 @@ margin_left = 12.0
 margin_top = 8.0
 margin_right = 243.0
 margin_bottom = 24.0
+theme = ExtResource( 8 )
 text = "Stuck? Hit R to restart the level"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

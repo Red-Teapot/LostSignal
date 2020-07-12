@@ -623,18 +623,6 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = -230.0
-margin_top = 174.0
-margin_right = -69.0
-margin_bottom = 190.0
-rect_scale = Vector2( 2, 2 )
-theme = ExtResource( 2 )
-text = "You can't cheat this one"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Walls" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 49 )

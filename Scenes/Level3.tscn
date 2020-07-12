@@ -623,19 +623,6 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 278.0
-margin_top = -216.0
-margin_right = 418.0
-margin_bottom = -181.0
-rect_scale = Vector2( 2, 2 )
-theme = ExtResource( 8 )
-text = "It would be too easy
-without this wall"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Walls" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 49 )

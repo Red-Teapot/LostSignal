@@ -1,12 +1,15 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 [ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=6]
 [ext_resource path="res://Textures/Character.png" type="Texture" id=7]
 [ext_resource path="res://UI/MainTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -683,6 +686,17 @@ visible = false
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
+
+[node name="DirectionActivate" type="AudioStreamPlayer" parent="Character"]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="DirectionReset" type="AudioStreamPlayer" parent="Character"]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="MovementLoop" type="AudioStreamPlayer" parent="Character"]
+stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

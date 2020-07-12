@@ -21,6 +21,7 @@ run/main_scene="res://Scenes/MainMenu.tscn"
 [autoload]
 
 LevelInfo="*res://Scripts/LevelInfo.gd"
+SoundPlayer="*res://Scripts/SoundPlayer.gd"
 
 [rendering]
 

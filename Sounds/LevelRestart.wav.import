@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LevelRestart.wav-1bf2eb753dc5aa3f1d7d6b0f0e17907a.sample"
+
+[deps]
+
+source_file="res://Sounds/LevelRestart.wav"
+dest_files=[ "res://.import/LevelRestart.wav-1bf2eb753dc5aa3f1d7d6b0f0e17907a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,15 +1,35 @@
 extends Node
 
-var click = AudioStreamPlayer.new()
-var clickStream = load('res://Sounds/PlayButtonClick.wav')
-
-var sounds = {
-	'click': click,
+const soundList = {
+	'click': 'res://Sounds/PlayButtonClick.wav',
+	'mainTheme': 'res://Sounds/MainTheme.ogg',
+	'leevlRestart': 'res://Sounds/LevelRestart.wav',
+	'levelCompletion': 'res://Sounds/LevelComplete.wav',
 }
+const volumeSettings = {
+	'mainTheme': -15,
+}
+var soundPlayers = {}
 
 func _init():
-	click.stream = clickStream
-	add_child(click)
+	for key in soundList:
+		var res = soundList[key]
+		var stream = load(res)
+		var player = AudioStreamPlayer.new()
+		player.stream = stream
+		player.pause_mode = Node.PAUSE_MODE_PROCESS
+		soundPlayers[key] = player
+		
+		if key in volumeSettings:
+			player.volume_db = volumeSettings[key]
+		
+		add_child(player)
 
-func play(name: String):
-	sounds[name].play()
+func play(name: String, restart: bool = false):
+	var player = soundPlayers[name]
+	
+	if restart or not player.playing:
+		player.play()
+
+func stop(name: String):
+	soundPlayers[name].stop()

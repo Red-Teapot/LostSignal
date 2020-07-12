@@ -8,6 +8,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_horizontal_guides_": [ 580.364 ],
 "_edit_use_anchors_": false
 }
 
@@ -80,13 +81,14 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0
-margin_top = -120.0
-margin_bottom = -120.0
+margin_top = -158.0
+margin_bottom = -158.0
 rect_scale = Vector2( 2, 2 )
 theme = ExtResource( 3 )
 text = "Credits:
-RedTeapot: idea, code, graphics, levels
-Albert L Chang: sounds and music"
+Albert L Chang: sounds and music
+Muzammil syed​: levels​
+RedTeapot: idea, code, graphics, levels"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -47,6 +47,10 @@ var walls: TileMap = null
 var interactive: TileMap = null
 var lastInteractiveTile: int = TileMap.INVALID_CELL
 
+var directionActivateSnd = null
+var directionResetSnd = null
+var movementLoopSnd = null
+
 # Temporary variables
 var tilePos: Vector2 = Vector2.ZERO;
 
@@ -71,6 +75,10 @@ func _enter_tree():
 	
 	walls = get_parent().find_node("Walls")
 	interactive = get_parent().find_node("Interactive")
+	
+	directionActivateSnd = get_node("DirectionActivate")
+	directionResetSnd = get_node("DirectionReset")
+	movementLoopSnd = get_node("MovementLoop")
 
 func isTileFree(tilePos: Vector2):
 	return walls.get_cellv(tilePos) == TileMap.INVALID_CELL
@@ -159,6 +167,10 @@ func _input(event):
 	if event is InputEventKey:
 		if event.scancode in inputMap:
 			var dir = inputMap[event.scancode]
+			
+			if not moveState[dir]:
+				directionActivateSnd.play()
+			
 			moveState[dir] = true
 			updateArrows()
 		if event.scancode == KEY_R:
@@ -172,6 +184,7 @@ func checkInteractives():
 			TILE_DEATH:
 				respawn()
 			TILE_RESET:
+				directionResetSnd.play()
 				resetMovements()
 			TILE_GOAL:
 				SoundPlayer.play('levelCompletion', true)
@@ -204,6 +217,14 @@ func _physics_process(delta):
 	if isTargetReached:
 		isTargetReached = false
 		updateTarget()
+	
+	if position.distance_squared_to(target) < 8:
+		isTargetReached = true
+	
+	if isTargetReached:
+		movementLoopSnd.stop()
+	elif not movementLoopSnd.playing:
+		movementLoopSnd.play()
 	
 	var distance = position.distance_to(target)
 	position += position.direction_to(target) * min(distance, SPEED * delta)

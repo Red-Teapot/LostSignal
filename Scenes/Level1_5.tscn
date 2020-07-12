@@ -1,15 +1,15 @@
 [gd_scene load_steps=64 format=2]
 
-[ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=1]
-[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=2]
-[ext_resource path="res://Scripts/Character.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=4]
-[ext_resource path="res://Scripts/Level.gd" type="Script" id=5]
-[ext_resource path="res://Textures/Character.png" type="Texture" id=6]
-[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=7]
-[ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=8]
-[ext_resource path="res://Textures/Tiles.png" type="Texture" id=9]
-[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=10]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
+[ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=6]
+[ext_resource path="res://Textures/Character.png" type="Texture" id=7]
+[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -157,7 +157,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="TileSet" id=49]
 0/name = "Walls"
-0/texture = ExtResource( 9 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 192, 256 )
@@ -469,7 +469,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 1/name = "Fake Wall"
-1/texture = ExtResource( 9 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 192, 96, 32, 32 )
@@ -482,11 +482,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [sub_resource type="TileSet" id=50]
 0/name = "Death"
-0/texture = ExtResource( 9 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 192, 0, 32, 32 )
@@ -500,7 +500,7 @@ script = ExtResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Reset"
-1/texture = ExtResource( 9 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 192, 32, 32, 32 )
@@ -514,7 +514,7 @@ script = ExtResource( 1 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Goal"
-2/texture = ExtResource( 9 )
+2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 192, 64, 32, 32 )
@@ -528,7 +528,7 @@ script = ExtResource( 1 )
 2/shapes = [  ]
 2/z_index = 0
 3/name = "R conveyor"
-3/texture = ExtResource( 9 )
+3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 256, 32, 32 )
@@ -542,7 +542,7 @@ script = ExtResource( 1 )
 3/shapes = [  ]
 3/z_index = 0
 4/name = "D conveyor"
-4/texture = ExtResource( 9 )
+4/texture = ExtResource( 4 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 32, 256, 32, 32 )
@@ -556,7 +556,7 @@ script = ExtResource( 1 )
 4/shapes = [  ]
 4/z_index = 0
 5/name = "L conveyor"
-5/texture = ExtResource( 9 )
+5/texture = ExtResource( 4 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 64, 256, 32, 32 )
@@ -570,7 +570,7 @@ script = ExtResource( 1 )
 5/shapes = [  ]
 5/z_index = 0
 6/name = "U conveyor"
-6/texture = ExtResource( 9 )
+6/texture = ExtResource( 4 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 96, 256, 32, 32 )
@@ -617,20 +617,20 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Level3_5" type="Node2D"]
-script = ExtResource( 5 )
+[node name="Level1_5" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = -230.0
-margin_top = 174.0
-margin_right = -69.0
-margin_bottom = 190.0
+margin_left = 240.0
+margin_top = 310.0
+margin_right = 352.0
+margin_bottom = 326.0
 rect_scale = Vector2( 2, 2 )
-theme = ExtResource( 2 )
-text = "You can't cheat this one"
+theme = ExtResource( 8 )
+text = "Still warming up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -640,18 +640,18 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 49 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -131080, 1, 0, -131079, 1, 0, -131078, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -65544, 1, 0, -65543, 0, 3, -65542, 0, 131073, -65541, 0, 131073, -65540, 0, 131073, -65539, 0, 196608, -65538, 0, 131073, -65537, 0, 131073, -131072, 0, 131073, -131071, 0, 131073, -131070, 0, 131073, -131069, 0, 131073, -131068, 0, 4, -131067, 1, 0, -8, 1, 0, -7, 0, 65538, -3, 0, 327681, -65532, 0, 65536, -65531, 1, 0, 65528, 1, 0, 65529, 0, 65538, 65533, 0, 458753, 4, 0, 65536, 5, 1, 0, 131064, 1, 0, 131065, 0, 65538, 65540, 0, 65536, 65541, 1, 0, 196600, 1, 0, 196601, 0, 65538, 131076, 0, 65536, 131077, 1, 0, 262136, 1, 0, 262137, 0, 65538, 196612, 0, 65536, 196613, 1, 0, 327672, 1, 0, 327673, 0, 65538, 262148, 0, 65536, 262149, 1, 0, 393208, 1, 0, 393209, 0, 65539, 393210, 0, 1, 393211, 0, 1, 393212, 0, 1, 393213, 0, 1, 393214, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 65540, 327685, 1, 0, 458744, 1, 0, 458745, 1, 0, 458746, 1, 0, 458747, 1, 0, 458748, 1, 0, 458749, 1, 0, 458750, 1, 0, 458751, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0 )
+tile_data = PoolIntArray( -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262139, 1, 0, -262138, 1, 0, -262137, 1, 0, -262136, 1, 0, -262135, 1, 0, -131076, 1, 0, -131075, 0, 3, -131074, 0, 131073, -131073, 0, 131073, -196608, 0, 131073, -196607, 0, 131073, -196606, 0, 131073, -196605, 0, 131073, -196604, 0, 131073, -196603, 0, 131073, -196602, 0, 131073, -196601, 0, 131073, -196600, 0, 4, -196599, 1, 0, -65540, 1, 0, -65539, 0, 65538, -131064, 0, 65536, -131063, 1, 0, -4, 1, 0, -3, 0, 65538, -65528, 0, 65536, -65527, 1, 0, 65532, 1, 0, 65533, 0, 65538, 5, 0, 327682, 8, 0, 65536, 9, 1, 0, 131068, 1, 0, 131069, 0, 65538, 65544, 0, 65536, 65545, 1, 0, 196604, 1, 0, 196605, 0, 65538, 131080, 0, 65536, 131081, 1, 0, 262140, 1, 0, 262141, 0, 65538, 196616, 0, 65536, 196617, 1, 0, 327676, 1, 0, 327677, 0, 65538, 262152, 0, 65536, 262153, 1, 0, 393212, 1, 0, 393213, 0, 65538, 327680, 0, 327682, 327688, 0, 65536, 327689, 1, 0, 458748, 1, 0, 458749, 0, 65538, 393224, 0, 65536, 393225, 1, 0, 524284, 1, 0, 524285, 0, 65538, 458760, 0, 65536, 458761, 1, 0, 589820, 1, 0, 589821, 0, 65539, 589822, 0, 1, 589823, 0, 1, 524288, 0, 1, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 1, 524293, 0, 1, 524294, 0, 1, 524295, 0, 1, 524296, 0, 65540, 524297, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0 )
 
 [node name="Interactive" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 50 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 131066, 2, 0, 65539, 1, 0 )
+tile_data = PoolIntArray( 458759, 2, 0 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
 position = Vector2( 32, 32 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource( 51 )
@@ -662,41 +662,41 @@ smoothing_enabled = true
 
 [node name="Sprite" type="Sprite" parent="Character"]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="ArrowL" type="Sprite" parent="Character"]
 visible = false
 rotation = 3.14159
 scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 
 [node name="ArrowR" type="Sprite" parent="Character"]
 visible = false
 scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 
 [node name="ArrowU" type="Sprite" parent="Character"]
 visible = false
 rotation = -1.5708
 scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 
 [node name="ArrowD" type="Sprite" parent="Character"]
 visible = false
 rotation = 1.5708
 scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 
 [node name="DirectionActivate" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = -10.0
 
 [node name="DirectionReset" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 4 )
+stream = ExtResource( 10 )
 volume_db = -10.0
 
 [node name="MovementLoop" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -717,7 +717,7 @@ margin_left = 128.0
 margin_right = 384.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 256, 32 )
-theme = ExtResource( 2 )
+theme = ExtResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StuckHint/Panel"]
 anchor_right = 1.0
@@ -731,7 +731,7 @@ margin_left = 12.0
 margin_top = 8.0
 margin_right = 243.0
 margin_bottom = 24.0
-theme = ExtResource( 2 )
+theme = ExtResource( 8 )
 text = "Stuck? Hit R to restart the level"
 align = 1
 valign = 1

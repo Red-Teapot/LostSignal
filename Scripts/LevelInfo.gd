@@ -24,5 +24,8 @@ func startLevel(name: String):
 
 func startNextLevel():
 	var currentLevelName = get_tree().current_scene.name
-	var nextLevelName = LEVEL_SEQ[currentLevelName]
-	startLevel(nextLevelName)
+	if currentLevelName in LEVEL_SEQ:
+		var nextLevelName = LEVEL_SEQ[currentLevelName]
+		startLevel(nextLevelName)
+	else:
+		startLevel('MainMenu')

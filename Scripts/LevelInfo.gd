@@ -12,7 +12,8 @@ const LEVEL_SEQ = {
 	'Level4_5': 'Level5',
 	'Level5': 'Level6',
 	'Level6': 'Level7',
-	'Level7': 'GameWin',
+	'Level7': 'Level8',
+	'Level8': 'GameWin',
 }
 
 func startScene(name: String):

@@ -1,15 +1,15 @@
 [gd_scene load_steps=64 format=2]
 
-[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 [ext_resource path="res://Textures/CharacterArrow.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tiles.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/WallsTileset.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Level.gd" type="Script" id=6]
+[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=6]
 [ext_resource path="res://Textures/Character.png" type="Texture" id=7]
-[ext_resource path="res://Sounds/CharacterDirectionActivate.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=10]
+[ext_resource path="res://UI/MainTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Sounds/CharacterMovementLoop.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/CharacterDirectionReset.wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -617,8 +617,8 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Level1" type="Node2D"]
-script = ExtResource( 6 )
+[node name="Level8" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
@@ -628,17 +628,17 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 49 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -1376253, 1, 0, -1376252, 1, 0, -1376251, 1, 0, -1376250, 1, 0, -1376249, 1, 0, -1310717, 1, 0, -1310716, 0, 3, -1310715, 0, 131073, -1310714, 0, 4, -1310713, 1, 0, -1245181, 1, 0, -1245180, 0, 65538, -1245178, 0, 65536, -1245177, 1, 0, -1179645, 1, 0, -1179644, 0, 65538, -1179642, 0, 65536, -1179641, 1, 0, -1114109, 1, 0, -1114108, 0, 65538, -1114106, 0, 65536, -1114105, 1, 0, -1048573, 1, 0, -1048572, 0, 65538, -1048570, 0, 65536, -1048569, 1, 0, -983037, 1, 0, -983036, 0, 65538, -983034, 0, 65536, -983033, 1, 0, -917501, 1, 0, -917500, 0, 65538, -917498, 0, 65536, -917497, 1, 0, -851965, 1, 0, -851964, 0, 65538, -851962, 0, 65536, -851961, 1, 0, -786429, 1, 0, -786428, 0, 65538, -786426, 0, 65536, -786425, 1, 0, -720893, 1, 0, -720892, 0, 65538, -720890, 0, 65536, -720889, 1, 0, -655357, 1, 0, -655356, 0, 65538, -655354, 0, 65536, -655353, 1, 0, -589821, 1, 0, -589820, 0, 65538, -589818, 0, 65536, -589817, 1, 0, -524285, 1, 0, -524284, 0, 65538, -524282, 0, 65536, -524281, 1, 0, -458749, 1, 0, -458748, 0, 65538, -458746, 0, 65536, -458745, 1, 0, -393213, 1, 0, -393212, 0, 65538, -393210, 0, 65536, -393209, 1, 0, -262146, 1, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 0, 65538, -327674, 0, 65536, -327673, 1, 0, -327672, 1, 0, -327671, 1, 0, -327670, 1, 0, -327669, 1, 0, -327668, 1, 0, -327667, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 0, 3, -262144, 0, 131073, -262143, 0, 131073, -262142, 0, 131073, -262141, 0, 131073, -262140, 0, 131074, -262138, 0, 131072, -262137, 0, 131073, -262136, 0, 131073, -262135, 0, 131073, -262134, 0, 131073, -262133, 0, 131073, -262132, 0, 4, -262131, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 0, 65538, -196596, 0, 65536, -196595, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 0, 65538, -131060, 0, 65536, -131059, 1, 0, -2, 1, 0, -1, 0, 65538, -65524, 0, 65536, -65523, 1, 0, 65534, 1, 0, 65535, 0, 65538, 12, 0, 65536, 13, 1, 0, 131070, 1, 0, 131071, 0, 65538, 65548, 0, 65536, 65549, 1, 0, 196606, 1, 0, 196607, 0, 65538, 131084, 0, 65536, 131085, 1, 0, 262142, 1, 0, 262143, 0, 65538, 196620, 0, 65536, 196621, 1, 0, 327678, 1, 0, 327679, 0, 65539, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 1, 262150, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 65540, 262157, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0 )
+tile_data = PoolIntArray( -524293, 1, 0, -524292, 1, 0, -524291, 1, 0, -524290, 1, 0, -524289, 1, 0, -589824, 1, 0, -589823, 1, 0, -589822, 1, 0, -589821, 1, 0, -589820, 1, 0, -589819, 1, 0, -589818, 1, 0, -589817, 1, 0, -589816, 1, 0, -589815, 1, 0, -589814, 1, 0, -458757, 1, 0, -458756, 0, 3, -458755, 0, 131073, -458754, 0, 131073, -458753, 0, 131073, -524288, 0, 131073, -524287, 0, 131073, -524286, 0, 131073, -524285, 0, 131073, -524284, 0, 131073, -524283, 0, 131073, -524282, 0, 131073, -524281, 0, 131073, -524280, 0, 131073, -524279, 0, 4, -524278, 1, 0, -393222, 1, 0, -393221, 1, 0, -393220, 0, 65538, -458743, 0, 65536, -458742, 1, 0, -327685, 1, 0, -327684, 0, 65538, -393207, 0, 65536, -393206, 1, 0, -262149, 1, 0, -262148, 0, 65538, -327675, 0, 196611, -327673, 0, 0, -327672, 0, 1, -327671, 0, 65540, -327670, 1, 0, -196613, 1, 0, -196612, 0, 65538, -262139, 0, 458753, -262137, 0, 65536, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -131077, 1, 0, -131076, 0, 65538, -196601, 0, 65536, -196600, 1, 0, -65541, 1, 0, -65540, 0, 65538, -131065, 0, 65536, -131064, 1, 0, -5, 1, 0, -4, 0, 65538, -65529, 0, 65536, -65528, 1, 0, 65531, 1, 0, 65532, 0, 65538, 4, 0, 196611, 7, 0, 65536, 8, 1, 0, 131067, 1, 0, 131068, 0, 65538, 65540, 0, 327683, 65543, 0, 65536, 65544, 1, 0, 196603, 1, 0, 196604, 0, 65539, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 458755, 131079, 0, 65536, 131080, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 0, 65538, 196615, 0, 65536, 196616, 1, 0, 262147, 1, 0, 262148, 0, 65539, 262149, 0, 1, 262150, 0, 1, 262151, 0, 65540, 262152, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0 )
 
 [node name="Interactive" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 50 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 8, 2, 0 )
+tile_data = PoolIntArray( -458744, 1, 0, -131075, 3, 0, -131074, 3, 0, -131073, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, 196613, 2, 0 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
-position = Vector2( 224, 32 )
+position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
@@ -676,15 +676,15 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="DirectionActivate" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 8 )
+stream = ExtResource( 6 )
 volume_db = -10.0
 
 [node name="DirectionReset" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -10.0
 
 [node name="MovementLoop" type="AudioStreamPlayer" parent="Character"]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -705,10 +705,7 @@ margin_left = 128.0
 margin_right = 384.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 256, 32 )
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StuckHint/Panel"]
 anchor_right = 1.0
@@ -722,7 +719,10 @@ margin_left = 12.0
 margin_top = 8.0
 margin_right = 243.0
 margin_bottom = 24.0
+theme = ExtResource( 8 )
 text = "Stuck? Hit R to restart the level"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -741,18 +741,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 230.0
-margin_top = -1352.0
-margin_right = 349.0
-margin_bottom = -1336.0
-rect_scale = Vector2( 2, 2 )
-theme = ExtResource( 1 )
-text = "Why are you here?"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -8,10 +8,9 @@ func _init() -> void:
 	load_level('test')
 
 func _recalculate_bounds() -> void:
-	var bounds: Rect2 = map.get_used_rect()
+	bounds = map.get_used_rect()
 	bounds.position *= Globals.CELL_SIZE
 	bounds.size *= Globals.CELL_SIZE
-	self.bounds = bounds
 
 func load_level(name: String) -> void:
 	for child in get_children():

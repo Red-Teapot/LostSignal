@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 		_set_limits(limits)
 	
 	if (target_zoom - zoom).length_squared() > 0.00001:
-		zoom += (target_zoom - zoom) * delta * 10
+		zoom += (target_zoom - zoom) * delta * 8
 	else:
 		# Snap to avoid weird scaling issues
 		zoom = target_zoom

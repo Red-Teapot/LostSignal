@@ -1,4 +1,0 @@
-extends TileSet
-tool
-
-func 

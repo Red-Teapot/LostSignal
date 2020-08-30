@@ -4,6 +4,10 @@ const SPEED: float = 96.0
 const OFFSET = Globals.CELL_SIZE_V / 2
 
 var map_holder: MapHolder = null
+var arrow_u: Sprite = null
+var arrow_d: Sprite = null
+var arrow_l: Sprite = null
+var arrow_r: Sprite = null
 
 var target: Vector2 = Vector2.ZERO
 var old_tile_pos: Vector2 = Vector2.INF
@@ -16,19 +20,40 @@ var movement_flags: int = 0
 
 func _enter_tree() -> void:
 	map_holder = $'/root/Gameplay/MapHolder' as MapHolder
+	arrow_u = $'ArrowU' as Sprite
+	arrow_d = $'ArrowD' as Sprite
+	arrow_l = $'ArrowL' as Sprite
+	arrow_r = $'ArrowR' as Sprite
+
+func _update_arrows() -> void:
+	arrow_u.visible = (movement_flags & MapHolder.Direction.UP) != 0
+	arrow_d.visible = (movement_flags & MapHolder.Direction.DOWN) != 0
+	arrow_l.visible = (movement_flags & MapHolder.Direction.LEFT) != 0
+	arrow_r.visible = (movement_flags & MapHolder.Direction.RIGHT) != 0
 
 func _input(event: InputEvent) -> void:
+	var arrows_need_update: bool = false
 	if event.is_action_pressed("gameplay_up"):
 		movement_flags |= MapHolder.Direction.UP
+		arrows_need_update = true
 	if event.is_action_pressed("gameplay_down"):
 		movement_flags |= MapHolder.Direction.DOWN
+		arrows_need_update = true
 	if event.is_action_pressed("gameplay_left"):
 		movement_flags |= MapHolder.Direction.LEFT
+		arrows_need_update = true
 	if event.is_action_pressed("gameplay_right"):
 		movement_flags |= MapHolder.Direction.RIGHT
+		arrows_need_update = true
+	
+	if arrows_need_update:
+		_update_arrows()
 
 func _check_controls() -> void:
 	controls_offset = Vector2.ZERO
+	if movement_flags == -1:
+		return
+	
 	if movement_flags & MapHolder.Direction.LEFT != 0:
 		controls_offset.x -= 1
 	if movement_flags & MapHolder.Direction.RIGHT != 0:
@@ -49,8 +74,10 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 		MapHolder.TileType.RESET:
 			var reset_flags = map_holder.get_reset_flags(tile_pos)
 			movement_flags &= (~reset_flags)
+			_update_arrows()
 		MapHolder.TileType.EXIT:
-			print('EXIT')
+			# TODO
+			movement_flags = -1
 
 func _check_walls(tile_pos: Vector2, offset: Vector2) -> Vector2:
 	var dx = Vector2(offset.x, 0)

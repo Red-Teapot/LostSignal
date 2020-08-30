@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://gameplay/map_holder.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/camera.gd" type="Script" id=2]
 [ext_resource path="res://gameplay/player.gd" type="Script" id=3]
 [ext_resource path="res://gameplay/character.png" type="Texture" id=4]
+[ext_resource path="res://gameplay/character_arrow.png" type="Texture" id=5]
 
 [node name="Gameplay" type="Node2D"]
 
@@ -23,5 +24,24 @@ script = ExtResource( 2 )
 position = Vector2( 16, 16 )
 script = ExtResource( 3 )
 
-[node name="character" type="Sprite" parent="Player"]
+[node name="CharacterSprite" type="Sprite" parent="Player"]
 texture = ExtResource( 4 )
+
+[node name="ArrowU" type="Sprite" parent="Player"]
+visible = false
+rotation = -1.5708
+texture = ExtResource( 5 )
+
+[node name="ArrowD" type="Sprite" parent="Player"]
+visible = false
+rotation = 1.5708
+texture = ExtResource( 5 )
+
+[node name="ArrowL" type="Sprite" parent="Player"]
+visible = false
+rotation = -3.14159
+texture = ExtResource( 5 )
+
+[node name="ArrowR" type="Sprite" parent="Player"]
+visible = false
+texture = ExtResource( 5 )

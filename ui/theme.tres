@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=10 format=2]
+
+[ext_resource path="res://ui/lostsignal-white.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://ui/panel.png" type="Texture" id=2]
+[ext_resource path="res://ui/button.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 0.7, 0.7, 0.7, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 1, 0, 0.984314, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 0, 1, 0.294118, 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 14.0
+margin_bottom = 14.0
+
+[resource]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.7, 0.7, 0.7, 1 )
+Button/colors/font_color_hover = Color( 0, 1, 0.294118, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+Panel/styles/panel = SubResource( 6 )

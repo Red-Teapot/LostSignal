@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ButtonHover9patch.png-d7e73d877f14de67933f6b9e6f994a9d.stex"
+path="res://.import/lostsignal.png-3e93d1f4e4a3a5420d30b36b4946ec46.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ButtonHover9patch.png"
-dest_files=[ "res://.import/ButtonHover9patch.png-d7e73d877f14de67933f6b9e6f994a9d.stex" ]
+source_file="res://ui/lostsignal.png"
+dest_files=[ "res://.import/lostsignal.png-3e93d1f4e4a3a5420d30b36b4946ec46.stex" ]
 
 [params]
 

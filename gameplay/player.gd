@@ -8,6 +8,7 @@ var arrow_u: Sprite = null
 var arrow_d: Sprite = null
 var arrow_l: Sprite = null
 var arrow_r: Sprite = null
+var stuck_hint: StuckHint = null
 
 var target: Vector2 = Vector2.ZERO
 var old_tile_pos: Vector2 = Vector2.INF
@@ -24,6 +25,7 @@ func _enter_tree() -> void:
 	arrow_d = $'ArrowD' as Sprite
 	arrow_l = $'ArrowL' as Sprite
 	arrow_r = $'ArrowR' as Sprite
+	stuck_hint = $'/root/Gameplay/HUD/StuckHint' as StuckHint
 
 func _update_arrows() -> void:
 	arrow_u.visible = (movement_flags & MapHolder.Direction.UP) != 0
@@ -79,20 +81,44 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 			# TODO
 			movement_flags = -1
 
-func _check_walls(tile_pos: Vector2, offset: Vector2) -> Vector2:
+func _check_obstacles(tile_pos: Vector2, offset: Vector2) -> Vector2:
+	# Horizontal
 	var dx = Vector2(offset.x, 0)
-
 	if map_holder.get_tilev(tile_pos + dx) == MapHolder.TileType.WALL:
 		offset.x = 0
+	if map_holder.get_tilev(tile_pos + dx) == MapHolder.TileType.CONVEYOR \
+			and map_holder.get_conveyor_movement(tile_pos + dx) == -offset:
+		offset.x = 0
 	
+	# Vertical
 	var dy = Vector2(0, offset.y)
 	if map_holder.get_tilev(tile_pos + dy) == MapHolder.TileType.WALL:
 		offset.y = 0
+	if map_holder.get_tilev(tile_pos + dy) == MapHolder.TileType.CONVEYOR \
+			and map_holder.get_conveyor_movement(tile_pos + dy) == -offset:
+		offset.y = 0
 	
-	if offset.x != 0 and offset.y != 0 and map_holder.get_tilev(tile_pos + offset) == MapHolder.TileType.WALL:
+	# Diagonal
+	if offset.x != 0 and offset.y != 0 \
+			and map_holder.get_tilev(tile_pos + offset) == MapHolder.TileType.WALL:
 		offset.x = 0
 
 	return offset
+
+func _check_stuck(offset: Vector2) -> void:
+	var offset_x = offset
+	offset_x.y = 0
+
+	var offset_y = offset
+	offset_y.x = 0
+
+	var stuck_x = (movement_flags & (MapHolder.Direction.LEFT | MapHolder.Direction.RIGHT) != 0) \
+		and offset_x == Vector2.ZERO
+	var stuck_y = (movement_flags & (MapHolder.Direction.UP | MapHolder.Direction.DOWN) != 0) \
+		and offset_y == Vector2.ZERO
+	
+	if stuck_x and stuck_y:
+		stuck_hint.set_stuck(true)
 
 func _update_target(tile_pos: Vector2) -> void:
 	# Active tiles might change controls (e.g. reset tiles)
@@ -105,7 +131,11 @@ func _update_target(tile_pos: Vector2) -> void:
 	if offset == Vector2.ZERO:
 		offset = controls_offset
 	
-	target = tile_pos + _check_walls(tile_pos, offset)
+	offset = _check_obstacles(tile_pos, offset)
+
+	_check_stuck(offset)
+	
+	target = tile_pos + offset
 
 func _physics_process(delta: float) -> void:
 	var target_pos_world: Vector2 = target * Globals.CELL_SIZE + OFFSET

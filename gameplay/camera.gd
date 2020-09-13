@@ -10,6 +10,7 @@ var track_y: bool = true
 var limits: Rect2 = DEFAULT_LIMITS
 var player: Node2D = null
 var map: MapHolder = null
+var stuck_hint: StuckHint = null
 var zoomout_zoom: Vector2 = DEFAULT_ZOOM
 var target_zoom: Vector2 = DEFAULT_ZOOM
 
@@ -55,6 +56,7 @@ func _resize() -> void:
 func _enter_tree():
 	player = $'/root/Gameplay/Player'
 	map = $'/root/Gameplay/MapHolder'
+	stuck_hint = $'/root/Gameplay/HUD/StuckHint' as StuckHint
 	
 	get_tree().get_root().connect('size_changed', self, '_resize')
 	_resize()
@@ -64,6 +66,7 @@ func _process(delta: float) -> void:
 		target_zoom = zoomout_zoom
 		position = _center(map.bounds)
 		_set_limits(DEFAULT_LIMITS)
+		stuck_hint.disappear()
 	else:
 		target_zoom = DEFAULT_ZOOM
 		if track_x:
@@ -71,6 +74,7 @@ func _process(delta: float) -> void:
 		if track_y:
 			position.y = player.position.y
 		_set_limits(limits)
+		stuck_hint.appear()
 	
 	if (target_zoom - zoom).length_squared() > 0.00001:
 		zoom += (target_zoom - zoom) * delta * 8

@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "MapHolder",
 "language": "GDScript",
 "path": "res://gameplay/map_holder.gd"
+}, {
+"base": "AnimationPlayer",
+"class": "StuckHint",
+"language": "GDScript",
+"path": "res://gameplay/stuck_hint.gd"
 } ]
 _global_script_class_icons={
-"MapHolder": ""
+"MapHolder": "",
+"StuckHint": ""
 }
 
 [application]

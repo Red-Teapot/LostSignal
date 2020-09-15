@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://gameplay/map_holder.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/camera.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://gameplay/character_arrow.png" type="Texture" id=5]
 [ext_resource path="res://ui/theme.tres" type="Theme" id=6]
 [ext_resource path="res://gameplay/stuck_hint.gd" type="Script" id=7]
+[ext_resource path="res://gameplay/main_theme.ogg" type="AudioStream" id=8]
+[ext_resource path="res://gameplay/movement_loop.wav" type="AudioStream" id=9]
+[ext_resource path="res://gameplay/direction_activate.wav" type="AudioStream" id=10]
+[ext_resource path="res://gameplay/direction_reset.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -117,3 +121,20 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
+
+[node name="MovementLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Sounds"
+
+[node name="DirectionActivate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Sounds"
+
+[node name="DirectionReset" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "Sounds"

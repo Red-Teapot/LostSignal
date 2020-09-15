@@ -3,12 +3,18 @@ extends Node2D
 const SPEED: float = 96.0
 const OFFSET = Globals.CELL_SIZE_V / 2
 
+# Visuals
 var map_holder: MapHolder = null
 var arrow_u: Sprite = null
 var arrow_d: Sprite = null
 var arrow_l: Sprite = null
 var arrow_r: Sprite = null
 var stuck_hint: StuckHint = null
+
+# Audio players
+var movement_loop: AudioStreamPlayer = null
+var direction_activate: AudioStreamPlayer = null
+var direction_reset: AudioStreamPlayer = null
 
 var target: Vector2 = Vector2.ZERO
 var old_tile_pos: Vector2 = Vector2.INF
@@ -18,6 +24,7 @@ var active_tile_offset: Vector2 = Vector2.ZERO
 var walls_offset: Vector2 = Vector2.ZERO
 
 var movement_flags: int = 0
+var movement_flags_old: int = 0
 
 func _enter_tree() -> void:
 	map_holder = $'/root/Gameplay/MapHolder' as MapHolder
@@ -27,11 +34,17 @@ func _enter_tree() -> void:
 	arrow_r = $'ArrowR' as Sprite
 	stuck_hint = $'/root/Gameplay/HUD/StuckHint' as StuckHint
 
+	movement_loop = $'/root/Gameplay/MovementLoop' as AudioStreamPlayer
+	direction_activate = $'/root/Gameplay/DirectionActivate' as AudioStreamPlayer
+	direction_reset = $'/root/Gameplay/DirectionReset' as AudioStreamPlayer
+
 func _update_arrows() -> void:
 	arrow_u.visible = (movement_flags & MapHolder.Direction.UP) != 0
 	arrow_d.visible = (movement_flags & MapHolder.Direction.DOWN) != 0
 	arrow_l.visible = (movement_flags & MapHolder.Direction.LEFT) != 0
 	arrow_r.visible = (movement_flags & MapHolder.Direction.RIGHT) != 0
+
+	movement_flags_old = movement_flags
 
 func _input(event: InputEvent) -> void:
 	var arrows_need_update: bool = false
@@ -47,6 +60,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("gameplay_right"):
 		movement_flags |= MapHolder.Direction.RIGHT
 		arrows_need_update = true
+	
+	if movement_flags != movement_flags_old:
+		direction_activate.play()
 	
 	if arrows_need_update:
 		_update_arrows()
@@ -76,6 +92,7 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 		MapHolder.TileType.RESET:
 			var reset_flags = map_holder.get_reset_flags(tile_pos)
 			movement_flags &= (~reset_flags)
+			direction_reset.play()
 			_update_arrows()
 		MapHolder.TileType.EXIT:
 			# TODO
@@ -117,7 +134,7 @@ func _check_stuck(offset: Vector2) -> void:
 	var stuck_y = (movement_flags & (MapHolder.Direction.UP | MapHolder.Direction.DOWN) != 0) \
 		and offset_y == Vector2.ZERO
 	
-	if stuck_x and stuck_y:
+	if stuck_x and stuck_y and movement_flags >= 0:
 		stuck_hint.set_stuck(true)
 
 func _update_target(tile_pos: Vector2) -> void:
@@ -148,3 +165,8 @@ func _physics_process(delta: float) -> void:
 		var tile_pos: Vector2 = map_holder.world_to_map(position)
 		_update_target(tile_pos)
 		old_tile_pos = tile_pos
+
+		if target != tile_pos:
+			movement_loop.play()
+		else:
+			movement_loop.stop()

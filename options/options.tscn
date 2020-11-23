@@ -1,0 +1,345 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://gameplay/character.png" type="Texture" id=2]
+[ext_resource path="res://gameplay/character_arrow.png" type="Texture" id=3]
+[ext_resource path="res://options/key_buttons.tres" type="Theme" id=4]
+[ext_resource path="res://options/options.gd" type="Script" id=5]
+
+[node name="Options" type="Control"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 110.0
+margin_top = 19.0
+margin_right = 290.0
+margin_bottom = 281.0
+
+[node name="VolumeOptionsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 16.0
+text = "Volume options"
+align = 1
+
+[node name="VolumeOptions" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 180.0
+margin_bottom = 60.0
+columns = 2
+
+[node name="MusicVolLabel" type="Label" parent="CenterContainer/VBoxContainer/VolumeOptions"]
+margin_top = 1.0
+margin_right = 48.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 48, 0 )
+text = "Music"
+
+[node name="MusicVol" type="HSlider" parent="CenterContainer/VBoxContainer/VolumeOptions"]
+margin_left = 52.0
+margin_right = 180.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 128, 18 )
+value = 70.0
+
+[node name="SoundsVolLabel" type="Label" parent="CenterContainer/VBoxContainer/VolumeOptions"]
+margin_top = 23.0
+margin_right = 48.0
+margin_bottom = 39.0
+text = "Sounds"
+
+[node name="SoundsVol" type="HSlider" parent="CenterContainer/VBoxContainer/VolumeOptions"]
+margin_left = 52.0
+margin_top = 22.0
+margin_right = 180.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 18 )
+value = 70.0
+
+[node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 32 )
+text = "Controls"
+align = 1
+valign = 2
+
+[node name="Controls" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 180.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 0, 110 )
+
+[node name="UpButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -7.0
+margin_right = 6.0
+margin_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_bottom = -24.0
+grow_vertical = 0
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoomOutButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 24.0
+margin_right = -24.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -7.0
+margin_top = 24.0
+margin_right = 7.0
+margin_bottom = 48.0
+grow_horizontal = 2
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = -6.0
+margin_right = -24.0
+margin_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_top = -6.0
+margin_right = 37.0
+margin_bottom = 6.0
+grow_vertical = 2
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 4 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterIcon" type="Control" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 32, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="CenterContainer/VBoxContainer/Controls/CharacterIcon"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowR" type="TextureRect" parent="CenterContainer/VBoxContainer/Controls/CharacterIcon"]
+rect_pivot_offset = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowL" type="TextureRect" parent="CenterContainer/VBoxContainer/Controls/CharacterIcon"]
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowU" type="TextureRect" parent="CenterContainer/VBoxContainer/Controls/CharacterIcon"]
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowD" type="TextureRect" parent="CenterContainer/VBoxContainer/Controls/CharacterIcon"]
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = -22.0
+margin_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Up"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 22.0
+margin_top = 28.0
+text = "Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = -58.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Left"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoomOutLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 28.0
+margin_right = -58.0
+grow_horizontal = 0
+text = "Zoom out"
+align = 2
+max_lines_visible = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 58.0
+grow_vertical = 2
+text = "Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartLabel" type="Label" parent="CenterContainer/VBoxContainer/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 58.0
+margin_bottom = -28.0
+grow_vertical = 0
+text = "Restart level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveCancelButtons" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 180.0
+margin_bottom = 262.0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/SaveCancelButtons"]
+margin_left = 16.0
+margin_top = 6.0
+margin_right = 164.0
+margin_bottom = 42.0
+
+[node name="SaveButton" type="Button" parent="CenterContainer/VBoxContainer/SaveCancelButtons/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 72, 0 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="CenterContainer/VBoxContainer/SaveCancelButtons/HBoxContainer"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 72, 0 )
+text = "Cancel"

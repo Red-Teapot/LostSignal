@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=15 format=2]
 
 [ext_resource path="res://ui/lostsignal-white.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://ui/panel.png" type="Texture" id=2]
 [ext_resource path="res://ui/button.png" type="Texture" id=3]
+[ext_resource path="res://ui/slider_knob.png" type="Texture" id=4]
+[ext_resource path="res://ui/slider_line.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -41,6 +43,15 @@ margin_top = 10.0
 margin_bottom = 10.0
 modulate_color = Color( 0, 1, 0.294118, 1 )
 
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+margin_left = 5.0
+margin_right = 5.0
+
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 32, 32 )
@@ -62,4 +73,11 @@ Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
+HSlider/icons/grabber = ExtResource( 4 )
+HSlider/icons/grabber_disabled = ExtResource( 4 )
+HSlider/icons/grabber_highlight = ExtResource( 4 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 8 )
+HSlider/styles/grabber_area_highlight = SubResource( 9 )
+HSlider/styles/slider = SubResource( 7 )
 Panel/styles/panel = SubResource( 6 )

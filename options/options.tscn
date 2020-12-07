@@ -77,7 +77,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 0, 32 )
-text = "Controls"
+text = "Controls (only letters allowed)"
 align = 1
 valign = 2
 

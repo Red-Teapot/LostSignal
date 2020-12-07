@@ -62,7 +62,7 @@ func _enter_tree():
 	_resize()
 
 func _process(delta: float) -> void:	
-	if Input.is_action_pressed("gameplay_zoomout"):
+	if Input.is_action_pressed("gameplay_zoom_out"):
 		target_zoom = zoomout_zoom
 		position = _center(map.bounds)
 		_set_limits(DEFAULT_LIMITS)

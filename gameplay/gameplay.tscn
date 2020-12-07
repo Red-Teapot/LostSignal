@@ -115,7 +115,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="HUD/StuckHint/CenterContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Stuck? Press R to restart the level"
+text = "Stuck? Press {0} to restart the level"
 align = 1
 valign = 1
 __meta__ = {

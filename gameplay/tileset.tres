@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=3 format=2]
 
 [ext_resource path="res://gameplay/tileset.png" type="Texture" id=1]
-[ext_resource path="res://gameplay/levels/tileset.gd" type="Script" id=2]
+[ext_resource path="res://gameplay/tileset.gd" type="Script" id=2]
 
 [resource]
 0/name = "Wall"

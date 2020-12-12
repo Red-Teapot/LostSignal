@@ -72,8 +72,8 @@ const RESET_ATLAS_POS_TO_DIRECTIONS: Dictionary = {
 var map: TileMap = null
 var bounds: Rect2 = Rect2()
 
-func _init() -> void:
-	load_level('test')
+func _enter_tree():
+	load_level(Globals.current_level)
 
 func _recalculate_bounds() -> void:
 	bounds = map.get_used_rect()

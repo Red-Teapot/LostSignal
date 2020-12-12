@@ -7,6 +7,8 @@ const TILEMAP_SCALE: Vector2 = Vector2(1, 1)
 var _music_player: AudioStreamPlayer = null
 var _sounds_player: AudioStreamPlayer = null
 
+var current_level: String = 'template'
+
 func _ready():
 	_music_player = AudioStreamPlayer.new()
 	_music_player.bus = 'Music'

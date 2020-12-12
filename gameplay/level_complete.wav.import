@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/LevelComplete.wav-05b456e741e36e9720705df74c3bc8cc.sample"
+path="res://.import/level_complete.wav-e5ceff5415afed5235f17a29ca891fbf.sample"
 
 [deps]
 
-source_file="res://Sounds/LevelComplete.wav"
-dest_files=[ "res://.import/LevelComplete.wav-05b456e741e36e9720705df74c3bc8cc.sample" ]
+source_file="res://gameplay/level_complete.wav"
+dest_files=[ "res://.import/level_complete.wav-e5ceff5415afed5235f17a29ca891fbf.sample" ]
 
 [params]
 

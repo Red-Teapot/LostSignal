@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://gameplay/character.png" type="Texture" id=2]
 [ext_resource path="res://gameplay/character_arrow.png" type="Texture" id=3]
 [ext_resource path="res://options/key_buttons.tres" type="Theme" id=4]
 [ext_resource path="res://options/options.gd" type="Script" id=5]
+[ext_resource path="res://ui/clickable.gd" type="Script" id=6]
 
 [node name="Options" type="Control"]
 anchor_right = 0.5
@@ -56,6 +57,7 @@ margin_bottom = 18.0
 rect_min_size = Vector2( 128, 18 )
 focus_mode = 0
 value = 70.0
+script = ExtResource( 6 )
 
 [node name="SoundsVolLabel" type="Label" parent="CenterContainer/VBoxContainer/VolumeOptions"]
 margin_top = 23.0
@@ -71,6 +73,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 0, 18 )
 focus_mode = 0
 value = 70.0
+script = ExtResource( 6 )
 
 [node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 64.0
@@ -101,6 +104,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "W"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,6 +121,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "R"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,6 +138,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "Q"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,6 +157,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "S"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,6 +176,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "A"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -187,6 +195,7 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 theme = ExtResource( 4 )
 text = "D"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -342,6 +351,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 72, 0 )
 focus_mode = 0
 text = "Save"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -353,3 +363,4 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 72, 0 )
 focus_mode = 0
 text = "Cancel"
+script = ExtResource( 6 )

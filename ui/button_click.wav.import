@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/LevelRestart.wav-1bf2eb753dc5aa3f1d7d6b0f0e17907a.sample"
+path="res://.import/button_click.wav-b725491af25b3614fbea791133bcbfae.sample"
 
 [deps]
 
-source_file="res://Sounds/LevelRestart.wav"
-dest_files=[ "res://.import/LevelRestart.wav-1bf2eb753dc5aa3f1d7d6b0f0e17907a.sample" ]
+source_file="res://ui/button_click.wav"
+dest_files=[ "res://.import/button_click.wav-b725491af25b3614fbea791133bcbfae.sample" ]
 
 [params]
 

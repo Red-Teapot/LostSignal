@@ -97,6 +97,7 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 		MapHolder.TileType.EXIT:
 			# TODO
 			movement_flags = -1
+			Globals.playSound('res://gameplay/level_complete.wav')
 
 func _check_obstacles(tile_pos: Vector2, offset: Vector2) -> Vector2:
 	# Horizontal

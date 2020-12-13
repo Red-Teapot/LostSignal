@@ -4,6 +4,20 @@ const CELL_SIZE: int = 32
 const CELL_SIZE_V: Vector2 = Vector2(CELL_SIZE, CELL_SIZE)
 const TILEMAP_SCALE: Vector2 = Vector2(1, 1)
 
+const LEVEL_SEQUENCE = [
+	'level1',
+	'level2',
+	'level3',
+	'level4',
+	'level5',
+	'level6',
+	'level7',
+	'level8',
+	'level9',
+	'level10',
+	'template', # TODO
+]
+
 var _music_player: AudioStreamPlayer = null
 var _sounds_player: AudioStreamPlayer = null
 
@@ -23,6 +37,10 @@ func _ready():
 
 func playMusic(path: String, replace: bool = false, loop: bool = true):
 	var newStream = load(path)
+	
+	# A hack to avoid crashing when gameplay scene is started via F6
+	if not _music_player:
+		_ready()
 	
 	if newStream == _music_player.stream and not replace:
 		return

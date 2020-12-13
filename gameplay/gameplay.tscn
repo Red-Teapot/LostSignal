@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://gameplay/map_holder.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/camera.gd" type="Script" id=2]
@@ -44,12 +44,67 @@ tracks/0/keys = {
 "values": [ -44, 0 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnimation/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnimation/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_restart"
+} ]
+}
+
 [node name="Gameplay" type="Node2D"]
 script = ExtResource( 12 )
 
 [node name="MapHolder" type="Node2D" parent="."]
 z_index = -1
 script = ExtResource( 1 )
+
+[node name="LevelNumLabel" type="Label" parent="."]
+rect_min_size = Vector2( 32, 32 )
+theme = ExtResource( 6 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -119,6 +174,22 @@ anchor_bottom = 1.0
 text = "Stuck? Press {0} to restart the level"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeAnimation" type="AnimationPlayer" parent="HUD"]
+anims/FadeIn = SubResource( 3 )
+anims/FadeOut = SubResource( 4 )
+
+[node name="FadeRect" type="ColorRect" parent="HUD/FadeAnimation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.5
+margin_top = -0.5
+margin_right = -0.5
+margin_bottom = -0.5
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

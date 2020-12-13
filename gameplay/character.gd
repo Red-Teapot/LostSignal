@@ -61,7 +61,7 @@ func _input(event: InputEvent) -> void:
 		movement_flags |= MapHolder.Direction.RIGHT
 		arrows_need_update = true
 	
-	if movement_flags != movement_flags_old:
+	if movement_flags != -1 and movement_flags != movement_flags_old:
 		direction_activate.play()
 	
 	if arrows_need_update:
@@ -95,9 +95,14 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 			direction_reset.play()
 			_update_arrows()
 		MapHolder.TileType.EXIT:
-			# TODO
 			movement_flags = -1
 			Globals.playSound('res://gameplay/level_complete.wav')
+			var currentLevel = Globals.current_level
+			var nextLevelIdx = Globals.LEVEL_SEQUENCE.find(currentLevel) + 1
+			# TODO Check if the current level is last
+			var nextLevel = Globals.LEVEL_SEQUENCE[nextLevelIdx]
+			Globals.current_level = nextLevel
+			$'/root/Gameplay/HUD/FadeAnimation'.play('FadeOut')
 
 func _check_obstacles(tile_pos: Vector2, offset: Vector2) -> Vector2:
 	# Horizontal

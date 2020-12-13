@@ -17,4 +17,4 @@ func _is_tile_bound(drawn_id: int, neighbor_id: int) -> bool:
 		# Make regular walls stick to fake walls
 		return tile_get_name(neighbor_id).ends_with('Wall')
 	else:
-		return ._is_tile_bound(drawn_id, neighbor_id)
+		return _is_tile_bound(drawn_id, neighbor_id)

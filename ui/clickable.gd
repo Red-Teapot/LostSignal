@@ -7,4 +7,4 @@ func _ready():
 	connect('pressed', self, '_click')
 
 func _click():
-	Globals.playSound('res://ui/button_click.wav')
+	Audio.playSound('res://ui/button_click.wav')

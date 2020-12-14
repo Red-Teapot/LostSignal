@@ -46,7 +46,6 @@ func _resize() -> void:
 	if track_y:
 		limits.position.y = map_bounds.position.y
 		limits.end.y = map_bounds.end.y
-	_set_limits(limits)
 	
 	if not track_x:
 		position.x = _center(map_bounds).x
@@ -65,7 +64,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("gameplay_zoom_out"):
 		target_zoom = zoomout_zoom
 		position = _center(map.bounds)
-		_set_limits(DEFAULT_LIMITS)
 		stuck_hint.disappear()
 	else:
 		target_zoom = DEFAULT_ZOOM
@@ -73,7 +71,6 @@ func _process(delta: float) -> void:
 			position.x = player.position.x
 		if track_y:
 			position.y = player.position.y
-		_set_limits(limits)
 		stuck_hint.appear()
 	
 	if (target_zoom - zoom).length_squared() > 0.00001:
@@ -81,3 +78,9 @@ func _process(delta: float) -> void:
 	else:
 		# Snap to avoid weird scaling issues
 		zoom = target_zoom
+	
+	var center = _center(limits)
+	var scaled_limits = Rect2()
+	scaled_limits.position = center + (limits.position - center) * zoom.x * 2
+	scaled_limits.size = limits.size * zoom.x * 2
+	_set_limits(scaled_limits)

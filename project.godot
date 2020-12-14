@@ -33,6 +33,8 @@ run/main_scene="res://menu/menu.tscn"
 
 Globals="*res://misc/globals.gd"
 Options="*res://persist/options.gd"
+Levels="*res://persist/levels.gd"
+Audio="*res://misc/audio.gd"
 
 [display]
 

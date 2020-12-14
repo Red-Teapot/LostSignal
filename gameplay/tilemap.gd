@@ -6,5 +6,5 @@ func _ready():
 	if get_tree().current_scene == self:
 		var filename = get_tree().current_scene.filename
 		var level_name = filename.get_file().rstrip('tscn').rstrip('.')
-		Globals.current_level = level_name
+		Levels.current_level = level_name
 		get_tree().change_scene('res://gameplay/gameplay.tscn')

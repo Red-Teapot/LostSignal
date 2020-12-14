@@ -73,7 +73,7 @@ var map: TileMap = null
 var bounds: Rect2 = Rect2()
 
 func _enter_tree():
-	load_level(Globals.current_level)
+	load_level(Levels.current_level)
 
 func _recalculate_bounds() -> void:
 	bounds = map.get_used_rect()

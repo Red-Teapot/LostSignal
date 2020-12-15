@@ -45,6 +45,7 @@ rect_min_size = Vector2( 0, 20 )
 margin_top = 44.0
 margin_right = 128.0
 margin_bottom = 80.0
+mouse_default_cursor_shape = 2
 text = "Play"
 script = ExtResource( 2 )
 
@@ -52,6 +53,7 @@ script = ExtResource( 2 )
 margin_top = 84.0
 margin_right = 128.0
 margin_bottom = 120.0
+mouse_default_cursor_shape = 2
 text = "Options"
 script = ExtResource( 2 )
 
@@ -59,6 +61,7 @@ script = ExtResource( 2 )
 margin_top = 124.0
 margin_right = 128.0
 margin_bottom = 160.0
+mouse_default_cursor_shape = 2
 text = "Quit"
 script = ExtResource( 2 )
 

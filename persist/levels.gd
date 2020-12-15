@@ -46,6 +46,14 @@ func _load():
 	
 	save_file.close()
 
+func complete_level(number):
+	if last_completed_level == NO_LEVEL_COMPLETED or number > last_completed_level:
+		last_completed_level = number
+
+func reset_progress():
+	last_completed_level = NO_LEVEL_COMPLETED
+	save()
+
 func save():
 	var save_file = File.new()
 	save_file.open(SAVE_FILE_PATH, File.WRITE)

@@ -7,40 +7,42 @@
 [ext_resource path="res://options/options.gd" type="Script" id=5]
 [ext_resource path="res://ui/clickable.gd" type="Script" id=6]
 
-[node name="Options" type="Control"]
+[node name="Options" type="ScrollContainer"]
 anchor_right = 0.5
 anchor_bottom = 0.5
 rect_scale = Vector2( 2, 2 )
 theme = ExtResource( 1 )
+scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 __meta__ = {
-"_edit_horizontal_guides_": [  ],
 "_edit_use_anchors_": false
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 388.0
+margin_bottom = 338.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 110.0
-margin_top = 19.0
-margin_right = 290.0
-margin_bottom = 281.0
+margin_left = 104.0
+margin_right = 284.0
+margin_bottom = 338.0
 
 [node name="VolumeOptionsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 180.0
-margin_bottom = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
 text = "Volume options"
 align = 1
+valign = 2
 
 [node name="VolumeOptions" type="GridContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 20.0
+margin_top = 36.0
 margin_right = 180.0
-margin_bottom = 60.0
+margin_bottom = 76.0
 columns = 2
 
 [node name="MusicVolLabel" type="Label" parent="CenterContainer/VBoxContainer/VolumeOptions"]
@@ -56,6 +58,7 @@ margin_right = 180.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 128, 18 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 value = 70.0
 script = ExtResource( 6 )
 
@@ -72,22 +75,43 @@ margin_right = 180.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 18 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 value = 70.0
 script = ExtResource( 6 )
 
-[node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 64.0
+[node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 80.0
 margin_right = 180.0
 margin_bottom = 96.0
+text = "Game progress"
+align = 1
+
+[node name="ProgressOptions" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 180.0
+margin_bottom = 136.0
+
+[node name="ResetProgressButton" type="Button" parent="CenterContainer/VBoxContainer/ProgressOptions"]
+margin_left = 31.0
+margin_right = 147.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 116, 0 )
+mouse_default_cursor_shape = 2
+text = "Reset progress"
+
+[node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 180.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 0, 32 )
 text = "Controls (only letters allowed)"
 align = 1
 valign = 2
 
 [node name="Controls" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_top = 100.0
+margin_top = 176.0
 margin_right = 180.0
-margin_bottom = 210.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 0, 110 )
 
 [node name="UpButton" type="Button" parent="CenterContainer/VBoxContainer/Controls"]
@@ -102,6 +126,7 @@ grow_horizontal = 2
 grow_vertical = 0
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "W"
 script = ExtResource( 6 )
@@ -119,6 +144,7 @@ margin_bottom = -24.0
 grow_vertical = 0
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "R"
 script = ExtResource( 6 )
@@ -136,6 +162,7 @@ margin_right = -24.0
 grow_horizontal = 0
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "Q"
 script = ExtResource( 6 )
@@ -155,6 +182,7 @@ margin_bottom = 48.0
 grow_horizontal = 2
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "S"
 script = ExtResource( 6 )
@@ -174,6 +202,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "A"
 script = ExtResource( 6 )
@@ -193,6 +222,7 @@ margin_bottom = 6.0
 grow_vertical = 2
 rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "D"
 script = ExtResource( 6 )
@@ -333,9 +363,9 @@ __meta__ = {
 }
 
 [node name="SaveCancelButtons" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 214.0
+margin_top = 290.0
 margin_right = 180.0
-margin_bottom = 262.0
+margin_bottom = 338.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 48 )
 
@@ -350,6 +380,7 @@ margin_right = 72.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 72, 0 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Save"
 script = ExtResource( 6 )
 __meta__ = {
@@ -362,5 +393,6 @@ margin_right = 148.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 72, 0 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Cancel"
 script = ExtResource( 6 )

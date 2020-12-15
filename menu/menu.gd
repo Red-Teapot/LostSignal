@@ -7,7 +7,7 @@ func _ready():
 	$"CenterContainer/VBoxContainer/QuitButton".connect('pressed', self, '_quit_button_press')
 
 func _play_button_press():
-	get_tree().change_scene('res://gameplay/gameplay.tscn')
+	get_tree().change_scene('res://level_select/level_select.tscn')
 
 func _options_button_press():
 	get_tree().change_scene('res://options/options.tscn')

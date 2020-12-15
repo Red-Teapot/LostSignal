@@ -97,6 +97,7 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 		MapHolder.TileType.EXIT:
 			movement_flags = -1
 			Audio.playSound('res://gameplay/level_complete.wav')
+			Levels.complete_level(Levels.current_level_idx())
 			Levels.current_level = Levels.next_level_name()
 			$'/root/Gameplay/HUD/FadeAnimation'.play('FadeOut')
 

@@ -17,6 +17,7 @@ func _ready():
 	
 	$'CenterContainer/VBoxContainer/SaveCancelButtons/HBoxContainer/SaveButton'.connect('pressed', self, '_save_button_press')
 	$'CenterContainer/VBoxContainer/SaveCancelButtons/HBoxContainer/CancelButton'.connect('pressed', self, '_cancel_button_press')
+	$'CenterContainer/VBoxContainer/ProgressOptions/ResetProgressButton'.connect('pressed', self, '_reset_progress')
 
 func _enter_tree():
 	$'CenterContainer/VBoxContainer/VolumeOptions/MusicVol'.value = Options.music_volume
@@ -43,7 +44,11 @@ func _unhandled_key_input(event):
 	
 	button.theme = default_key_button_theme
 	active_key_button = null
-	Globals.playSound('res://ui/button_click.wav')
+	Audio.playSound('res://ui/button_click.wav')
+
+func _reset_progress():
+	Audio.playSound('res://ui/button_click.wav')
+	Levels.reset_progress()
 	
 func _get_key_button(button_name: String) -> Button:
 	return get_node('CenterContainer/VBoxContainer/Controls/' + button_name) as Button

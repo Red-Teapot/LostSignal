@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "LevelButton",
+"language": "GDScript",
+"path": "res://level_select/level_button.gd"
+}, {
 "base": "Node",
 "class": "MapHolder",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://gameplay/stuck_hint.gd"
 } ]
 _global_script_class_icons={
+"LevelButton": "",
 "MapHolder": "",
 "StuckHint": ""
 }

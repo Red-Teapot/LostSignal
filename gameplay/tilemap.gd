@@ -1,6 +1,5 @@
 extends Node
 
-
 func _ready():
 	# A hack to load the game properly if launched by F6 in the editor
 	if get_tree().current_scene == self:

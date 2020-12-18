@@ -1,11 +1,9 @@
 extends Node
 
 
-var grid: GridContainer = null
+onready var grid: GridContainer = $'CenterContainer/VBoxContainer/CenterContainer/LevelButtonGrid'
 
 func _ready():
-	grid = $'CenterContainer/VBoxContainer/CenterContainer/LevelButtonGrid'
-	
 	var button = load('res://level_select/level_button.tscn')
 	
 	var last_completed_level = Levels.last_completed_level
@@ -26,7 +24,6 @@ func _ready():
 	$'CenterContainer/VBoxContainer/CenterContainer2/BackButton'.connect('pressed', self, '_back')
 
 func _back():
-	Audio.playSound('res://ui/button_click.wav')
 	get_tree().change_scene('res://menu/menu.tscn')
 
 func _play_level(level_number):

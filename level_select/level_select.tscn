@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://level_select/level_select.gd" type="Script" id=2]
+[ext_resource path="res://ui/clickable.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 0.5
@@ -21,10 +22,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 144.0
-margin_top = 120.0
-margin_right = 255.0
-margin_bottom = 180.0
+margin_left = 264.0
+margin_top = 150.0
+margin_right = 375.0
+margin_bottom = 210.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 111.0
@@ -48,6 +49,10 @@ margin_right = 111.0
 margin_bottom = 60.0
 
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 23.0
+margin_right = 87.0
+margin_bottom = 36.0
 rect_min_size = Vector2( 64, 0 )
 mouse_default_cursor_shape = 2
 text = "Back"
+script = ExtResource( 3 )

@@ -10,6 +10,7 @@ var arrow_d: Sprite = null
 var arrow_l: Sprite = null
 var arrow_r: Sprite = null
 var stuck_hint: StuckHint = null
+var gameplay: Gameplay = null
 
 # Audio players
 var movement_loop: AudioStreamPlayer = null
@@ -33,6 +34,7 @@ func _enter_tree() -> void:
 	arrow_l = $'ArrowL' as Sprite
 	arrow_r = $'ArrowR' as Sprite
 	stuck_hint = $'/root/Gameplay/HUD/StuckHint' as StuckHint
+	gameplay = $'/root/Gameplay' as Gameplay
 
 	movement_loop = $'/root/Gameplay/MovementLoop' as AudioStreamPlayer
 	direction_activate = $'/root/Gameplay/DirectionActivate' as AudioStreamPlayer
@@ -96,7 +98,7 @@ func _check_active_tiles(tile_pos: Vector2) -> void:
 			_update_arrows()
 		MapHolder.TileType.EXIT:
 			movement_flags = -1
-			Audio.playSound('res://gameplay/level_complete.wav')
+			Audio.play_sound('res://gameplay/level_complete.wav')
 			Levels.complete_level(Levels.current_level_idx())
 			Levels.current_level = Levels.next_level_name()
 			$'/root/Gameplay/HUD/FadeAnimation'.play('FadeOut')

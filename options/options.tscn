@@ -19,7 +19,7 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 388.0
+margin_right = 640.0
 margin_bottom = 338.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -27,8 +27,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 104.0
-margin_right = 284.0
+margin_left = 230.0
+margin_right = 410.0
 margin_bottom = 338.0
 
 [node name="VolumeOptionsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -92,12 +92,13 @@ margin_right = 180.0
 margin_bottom = 136.0
 
 [node name="ResetProgressButton" type="Button" parent="CenterContainer/VBoxContainer/ProgressOptions"]
-margin_left = 31.0
-margin_right = 147.0
+margin_left = 32.0
+margin_right = 148.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 116, 0 )
 mouse_default_cursor_shape = 2
 text = "Reset progress"
+script = ExtResource( 6 )
 
 [node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 140.0

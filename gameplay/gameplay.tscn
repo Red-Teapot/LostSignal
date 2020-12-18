@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://gameplay/map_holder.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/camera.gd" type="Script" id=2]
@@ -7,10 +7,12 @@
 [ext_resource path="res://gameplay/character_arrow.png" type="Texture" id=5]
 [ext_resource path="res://ui/theme.tres" type="Theme" id=6]
 [ext_resource path="res://gameplay/stuck_hint.gd" type="Script" id=7]
+[ext_resource path="res://ui/clickable.gd" type="Script" id=8]
 [ext_resource path="res://gameplay/movement_loop.wav" type="AudioStream" id=9]
 [ext_resource path="res://gameplay/direction_activate.wav" type="AudioStream" id=10]
 [ext_resource path="res://gameplay/direction_reset.wav" type="AudioStream" id=11]
 [ext_resource path="res://gameplay/gameplay.gd" type="Script" id=12]
+[ext_resource path="res://gameplay/pause_overlay.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -163,8 +165,8 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="HUD/StuckHint/CenterContainer"]
-margin_left = 94.0
-margin_right = 306.0
+margin_left = 214.0
+margin_right = 426.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 212, 36 )
 theme = ExtResource( 6 )
@@ -197,6 +199,76 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PauseOverlay" type="Control" parent="HUD"]
+pause_mode = 2
+visible = false
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="ColorRect" parent="HUD/PauseOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.898039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HUD/PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 160, 128 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PauseOverlay/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+rect_min_size = Vector2( 116, 96 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/PauseOverlay/Panel/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 16.0
+text = "Game paused"
+align = 1
+
+[node name="ContinueButton" type="Button" parent="HUD/PauseOverlay/Panel/VBoxContainer"]
+margin_top = 20.0
+margin_right = 128.0
+margin_bottom = 56.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Continue"
+script = ExtResource( 8 )
+
+[node name="MenuButton" type="Button" parent="HUD/PauseOverlay/Panel/VBoxContainer"]
+margin_top = 60.0
+margin_right = 128.0
+margin_bottom = 96.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Quit to menu"
+script = ExtResource( 8 )
 
 [node name="MovementLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

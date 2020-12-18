@@ -44,10 +44,9 @@ func _unhandled_key_input(event):
 	
 	button.theme = default_key_button_theme
 	active_key_button = null
-	Audio.playSound('res://ui/button_click.wav')
+	Audio.play_sound('res://ui/button_click.wav')
 
 func _reset_progress():
-	Audio.playSound('res://ui/button_click.wav')
 	Levels.reset_progress()
 	
 func _get_key_button(button_name: String) -> Button:

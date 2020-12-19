@@ -16,7 +16,7 @@ var right_key: int = KEY_D
 var zoom_out_key: int = KEY_Q
 var restart_key: int = KEY_R
 
-func _ready():
+func _init():
 	_load()
 	_apply()
 
@@ -44,7 +44,7 @@ func _load():
 	if not save_file.file_exists(SAVE_FILE_PATH):
 		return
 	
-	save_file.open('user://options.dat', File.READ)
+	save_file.open(SAVE_FILE_PATH, File.READ)
 	
 	music_volume = save_file.get_8()
 	sounds_volume = save_file.get_8()

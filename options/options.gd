@@ -48,6 +48,7 @@ func _unhandled_key_input(event):
 
 func _reset_progress():
 	Levels.reset_progress()
+	Hints.reset()
 	
 func _get_key_button(button_name: String) -> Button:
 	return get_node('CenterContainer/VBoxContainer/Controls/' + button_name) as Button

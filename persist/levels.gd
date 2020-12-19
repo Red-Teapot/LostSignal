@@ -29,7 +29,7 @@ func current_level_idx():
 func next_level_name():
 	return LEVEL_SEQUENCE[current_level_idx() + 1]
 
-func _ready():
+func _init():
 	for i in range(len(LEVEL_SEQUENCE)):
 		LEVEL_NAME_TO_IDX[LEVEL_SEQUENCE[i]] = i
 	

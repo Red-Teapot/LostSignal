@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://gameplay/map_holder.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/camera.gd" type="Script" id=2]
@@ -47,7 +47,62 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "FadeIn"
+resource_name = "Appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ControlsHint/CenterContainer:margin_bottom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 44 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ControlsHint/CenterContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ControlsHint/CenterContainer:margin_bottom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 44, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ControlsHint/CenterContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeAnimation/FadeRect:color")
@@ -61,9 +116,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeAnimation/FadeRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeAnimation/FadeRect:color")
@@ -90,6 +156,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "_restart"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FadeAnimation/FadeRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Gameplay" type="Node2D"]
@@ -184,11 +262,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ControlsHint" type="AnimationPlayer" parent="HUD"]
+anims/Appear = SubResource( 3 )
+anims/Disappear = SubResource( 7 )
+script = ExtResource( 7 )
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/ControlsHint"]
+visible = false
+anchor_right = 0.5
+grow_vertical = 0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HUD/ControlsHint/CenterContainer"]
+margin_left = 214.0
+margin_right = 426.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 212, 36 )
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/ControlsHint/CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "This should be a label"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FadeAnimation" type="AnimationPlayer" parent="HUD"]
-anims/FadeIn = SubResource( 3 )
-anims/FadeOut = SubResource( 4 )
+anims/FadeIn = SubResource( 5 )
+anims/FadeOut = SubResource( 6 )
 
 [node name="FadeRect" type="ColorRect" parent="HUD/FadeAnimation"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.5

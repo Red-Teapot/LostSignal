@@ -51,8 +51,11 @@ func _resize() -> void:
 		position.x = _center(map_bounds).x
 	if not track_y:
 		position.y = _center(map_bounds).y
+	
+	if track_x or track_y:
+		$'/root/Gameplay'.call_deferred('show_zoom_out_hint')
 
-func _enter_tree():
+func _ready():
 	player = $'/root/Gameplay/Player'
 	map = $'/root/Gameplay/MapHolder'
 	stuck_hint = $'/root/Gameplay/HUD/StuckHint' as StuckHint
@@ -65,6 +68,8 @@ func _process(delta: float) -> void:
 		target_zoom = zoomout_zoom
 		position = _center(map.bounds)
 		stuck_hint.disappear()
+		if track_x or track_y:
+			$'/root/Gameplay'.hide_zoom_out_hint()
 	else:
 		target_zoom = DEFAULT_ZOOM
 		if track_x:

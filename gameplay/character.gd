@@ -67,6 +67,7 @@ func _input(event: InputEvent) -> void:
 		direction_activate.play()
 	
 	if arrows_need_update:
+		$'/root/Gameplay'.hide_movement_hint()
 		_update_arrows()
 
 func _check_controls() -> void:

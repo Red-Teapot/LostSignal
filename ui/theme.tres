@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://ui/lostsignal-white.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://ui/panel.png" type="Texture" id=2]
 [ext_resource path="res://ui/button.png" type="Texture" id=3]
 [ext_resource path="res://ui/slider_knob.png" type="Texture" id=4]
 [ext_resource path="res://ui/slider_line.png" type="Texture" id=5]
+[ext_resource path="res://ui/scroll.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -61,6 +62,32 @@ margin_right = 14.0
 margin_top = 14.0
 margin_bottom = 14.0
 
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 7, 21 )
+margin_top = 7.0
+margin_bottom = 7.0
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 7, 21 )
+margin_top = 7.0
+margin_bottom = 7.0
+axis_stretch_vertical = 1
+modulate_color = Color( 1, 0, 0.984314, 1 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 7, 21 )
+margin_top = 7.0
+margin_bottom = 7.0
+axis_stretch_vertical = 1
+modulate_color = Color( 0, 1, 0.294118, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+content_margin_left = 8.0
+
 [resource]
 default_font = ExtResource( 1 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
@@ -82,3 +109,12 @@ HSlider/styles/grabber_area = SubResource( 6 )
 HSlider/styles/grabber_area_highlight = SubResource( 7 )
 HSlider/styles/slider = SubResource( 8 )
 Panel/styles/panel = SubResource( 9 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 15 )
+VScrollBar/styles/grabber_highlight = SubResource( 14 )
+VScrollBar/styles/grabber_pressed = SubResource( 16 )
+VScrollBar/styles/scroll = SubResource( 13 )
+VScrollBar/styles/scroll_focus = SubResource( 13 )

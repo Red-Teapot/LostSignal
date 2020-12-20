@@ -13,6 +13,9 @@ const LEVEL_SEQUENCE = [
 	'level8',
 	'level9',
 	'level10',
+	'level11',
+	'level12',
+	'level13',
 	'template', # TODO
 ]
 var LEVEL_NAME_TO_IDX: Dictionary = {}

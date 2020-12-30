@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "Disappear"
 length = 0.2
 tracks/0/type = "value"
@@ -264,7 +264,7 @@ __meta__ = {
 
 [node name="ControlsHint" type="AnimationPlayer" parent="HUD"]
 anims/Appear = SubResource( 3 )
-anims/Disappear = SubResource( 7 )
+anims/Disappear = SubResource( 4 )
 script = ExtResource( 7 )
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD/ControlsHint"]
@@ -301,7 +301,6 @@ anims/FadeIn = SubResource( 5 )
 anims/FadeOut = SubResource( 6 )
 
 [node name="FadeRect" type="ColorRect" parent="HUD/FadeAnimation"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.5

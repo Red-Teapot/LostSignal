@@ -2,6 +2,7 @@ extends Node
 
 const NO_LEVEL_COMPLETED = pow(2, 16) - 1
 
+const GAME_COMPLETED = 'game_completed'
 const LEVEL_SEQUENCE = [
 	'level1',
 	'level2',
@@ -16,7 +17,7 @@ const LEVEL_SEQUENCE = [
 	'level11',
 	'level12',
 	'level13',
-	'template', # TODO
+	'level14',
 ]
 var LEVEL_NAME_TO_IDX: Dictionary = {}
 
@@ -30,7 +31,10 @@ func current_level_idx():
 	return LEVEL_NAME_TO_IDX[current_level]
 
 func next_level_name():
-	return LEVEL_SEQUENCE[current_level_idx() + 1]
+	if current_level_idx() + 1 < len(LEVEL_SEQUENCE):
+		return LEVEL_SEQUENCE[current_level_idx() + 1]
+	else:
+		return GAME_COMPLETED
 
 func _init():
 	for i in range(len(LEVEL_SEQUENCE)):

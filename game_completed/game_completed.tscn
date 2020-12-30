@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/clickable.gd" type="Script" id=2]
+[ext_resource path="res://game_completed/game_completed.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnim/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeAnim/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="GameCompleted" type="Control"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 221.0
+margin_top = 136.0
+margin_right = 418.0
+margin_bottom = 224.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = -1.0
+margin_right = 197.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 48 )
+text = "You have completed the game, congrats!"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 197.0
+margin_bottom = 88.0
+mouse_default_cursor_shape = 2
+text = "Back to menu"
+script = ExtResource( 2 )
+
+[node name="FadeAnim" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="FadeAnim"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

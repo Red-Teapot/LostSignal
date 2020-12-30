@@ -71,5 +71,10 @@ func _restart():
 	_movement_loop.stop()
 	_direction_activate.stop()
 	_direction_reset.stop()
+	
 	Levels.save()
-	get_tree().change_scene('res://gameplay/gameplay.tscn')
+	
+	if Levels.current_level == Levels.GAME_COMPLETED:
+		get_tree().change_scene('res://game_completed/game_completed.tscn')
+	else:
+		get_tree().change_scene('res://gameplay/gameplay.tscn')
